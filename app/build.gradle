@@ -26,13 +26,16 @@ dependencies {
     })
 
     // loading bar
-    compile 'com.github.d-max:spots-dialog:0.6'
     //swipe back
-    compile 'com.github.liuguangqiang.prettyprogressbar:library:+'
     compile project(':library')
 
+
+    compile 'com.github.d-max:spots-dialog:0.6'
+    compile 'com.github.liuguangqiang.prettyprogressbar:library:+'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.android.support:appcompat-v7:25.0.1'
-
+    compile 'com.google.android.gms:play-services-maps:11.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.1'
     testCompile 'junit:junit:4.12'
 }
