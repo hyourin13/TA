@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:orientation="vertical">
+
+        <ViewFlipper
+            android:id="@+id/image_view_flipper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iimg2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dota1" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iimg3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dota2" />
+
+            </FrameLayout>
+
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iimg4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/dota3" />
+
+
+            </FrameLayout>
+
+        </ViewFlipper>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:id="@+id/btn_akun"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="2.5dp"
+            android:layout_weight="1"
+            android:background="#3eb4c8"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/image_view_flipper2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ika1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/person2"
+                        />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ika2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/person" />
+
+                </FrameLayout>
+
+
+            </ViewFlipper>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_maps"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="2.5dp"
+            android:layout_weight="1"
+            android:background="#ffd500"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/image_view_flipper3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iki1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/maps2" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iki2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/maps" />
+
+                </FrameLayout>
+
+
+            </ViewFlipper>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+
+        android:paddingBottom="0.5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="05dp">
+
+        <LinearLayout
+            android:id="@+id/btn_alumni"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="2.5dp"
+            android:layout_weight="1"
+            android:background="#ff4d4d"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/image_view_flipper4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ikt1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/people2" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ikt2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/people" />
+
+                </FrameLayout>
+
+
+            </ViewFlipper>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_dunia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="2.5dp"
+            android:layout_weight="1"
+            android:background="#00ff80"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/image_view_flipper5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ikti1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mpuss2" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ikti2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/mpuss" />
+
+                </FrameLayout>
+
+
+            </ViewFlipper>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="05dp"
+        android:paddingTop="05dp">
+
+        <LinearLayout
+            android:id="@+id/btn_radio"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="2.5dp"
+            android:layout_weight="1"
+            android:background="#8989ff"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/image_view_flipper6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ita1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/radio2" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/ita2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/radio" />
+
+                </FrameLayout>
+
+
+            </ViewFlipper>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_website"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="2.5dp"
+            android:layout_weight="1"
+            android:background="#3b3bff"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ViewFlipper
+                android:id="@+id/image_view_flipper7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iti1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/web2" />
+
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/iti2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="@string/app_name"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/web" />
+
+                </FrameLayout>
+
+
+            </ViewFlipper>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

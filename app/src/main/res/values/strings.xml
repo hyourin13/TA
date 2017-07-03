@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TA</string>
+    <string name="title_activity_web">Website Nurul Jadid</string>
+    <string name="title_activity_radio">Radio Nurul Jadid</string>
+</resources>
