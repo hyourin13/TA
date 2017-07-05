@@ -3,14 +3,14 @@ package mochamad.ulin.nuha.ta;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.telephony.TelephonyManager;
 import android.view.View;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-import org.json.JSONArray;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 
 /**
@@ -28,6 +28,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.menu_utama);
         initViews();
         futar();
+
 
     }
 
@@ -128,7 +129,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
 
                 break;
             case R.id.btn_maps:
-                skipActivity(MapsActivity.class);
+                skipActivity(Menu_Lokasi.class);
                 break;
             case R.id.btn_radio:
                 skipActivity(Activity_Radio.class);

@@ -59,7 +59,7 @@ public class Login extends AppCompatActivity{
         } else {
             final AccessToken accessToken = loginResult.getAccessToken();
             if (accessToken != null) {
-                startActivity(new Intent(this, Menu_utama.class));
+                startActivity(new Intent(this, Cek_nis.class));
                 finish();
             } else {
             }

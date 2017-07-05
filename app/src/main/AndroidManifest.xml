@@ -16,15 +16,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
-
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
-
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,24 +28,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".Signin">
+        <activity android:name=".Cek_nis">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity_Web"
             android:label="@string/title_activity_web"
-            android:theme="@style/Theme.Swipe.Back"></activity>
-        <activity android:name=".Activity_Radio"></activity>
+            android:theme="@style/Theme.Swipe.Back" />
+        <activity android:name=".Activity_Radio" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -61,27 +55,32 @@
             android:value="@string/account_kit_client_token" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".Menu_Lokasi"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppTheme" ></activity>
-
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".ErrorDaftar"
-            android:theme="@style/AppThemeNoActionBar"></activity>
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".Menu_utama"
-            android:theme="@style/AppThemeNoActionBar"></activity>
-
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".ErrorActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/action_bar_title_hello"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".Login">
-
-        </activity>
-
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppThemeNoActionBar"/>
+        <activity
+            android:name=".Signin"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Upload"
+            android:theme="@style/AppThemeNoActionBar" />
 
         <!--
                     The API key for Google Maps-based APIs is defined as a string resource.
@@ -90,9 +89,7 @@
                     You need a different API key for each encryption key, including the release key that is used to
                     sign the APK for publishing.
                     You can define the keys for the debug and release targets in src/debug/ and src/release/.
-               -->
-
-
+        -->
     </application>
 
 </manifest>
