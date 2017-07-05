@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backround">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="?attr/colorPrimary"
+        android:elevation="6dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <EditText
+        android:textColorHint="#b7ffffff"
+        android:id="@+id/ed_lokasi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:editable="false"
+        android:ems="10"
+        android:hint="klik disini untuk menentukan lokasi"
+        android:inputType="none"
+        android:singleLine="true"/>
+
+    <Button
+        android:layout_margin="5dp"
+        android:textColor="#fff"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btlanjut"
+        android:text="Lanjut"/>
+</LinearLayout>

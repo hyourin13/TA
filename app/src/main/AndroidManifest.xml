@@ -81,6 +81,12 @@
         <activity
             android:name=".Upload"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".MapsActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Daftar"
+            android:theme="@style/AppThemeNoActionBar" />
 
         <!--
                     The API key for Google Maps-based APIs is defined as a string resource.

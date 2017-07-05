@@ -149,7 +149,7 @@ public class ScrollingActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        Intent i = new Intent(ScrollingActivity.this, Upload.class);
+                        Intent i = new Intent(ScrollingActivity.this, Daftar.class);
                         i.putExtra("NIS", nis);
                         startActivity(i);
                         //Toast.makeText(ScrollingActivity.this, nis, Toast.LENGTH_LONG).show();

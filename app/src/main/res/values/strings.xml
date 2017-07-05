@@ -6,7 +6,16 @@
     <string name="facebook_app_id">1390449167704658</string>
     <string name="account_kit_client_token">88d2c451bb471e69cf52f1cb607ea456</string>
 
+    //mapss
+    <string name="no_geocoder_available">No geocoder available</string>
+    <string name="fetch_address">Fetch address</string>
+    <string name="address_found">Address found</string>
+    <string name="no_address_found">Sorry, no address found</string>
+    <string name="no_location_data_provided">No location data provided</string>
+    <string name="service_not_available">Sorry, the service is not available</string>
+    <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
 
+    //fb kit
     <string name="action_bar_title_hello">Hello</string>
     <string name="permissions_get_accounts_message">
         Grant permission to read your email address from your device to pre-fill.
