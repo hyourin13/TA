@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/main/assets/font/Lato-Medium.ttf" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/assets/font/Oxygen-Regular.ttf" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/AccountKitSimpleSampleApplication.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Error.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/ErrorActivity.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/ErrorDaftar.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/JSONParser.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Login.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/RequestHandler.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Signin.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg.jpg" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/bgrect.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_people_black_24dp.xml" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_web.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_phone.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/logonj.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/mybutton.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/rect.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/rect1.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_error.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/errordaftar.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/login.xml" charset="ISO-8859-1" />
   </component>
 </project>

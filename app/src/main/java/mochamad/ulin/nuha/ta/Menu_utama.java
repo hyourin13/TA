@@ -128,7 +128,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
 
                 break;
             case R.id.btn_maps:
-
+                skipActivity(MapsActivity.class);
                 break;
             case R.id.btn_radio:
                 skipActivity(Activity_Radio.class);

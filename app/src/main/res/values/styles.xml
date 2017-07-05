@@ -30,4 +30,8 @@
         <item name="android:windowNoTitle">true</item>
     </style>
 
+    <style name="AppLoginTheme" parent="Theme.AccountKit" >
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 </resources>

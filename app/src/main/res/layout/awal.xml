@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bgrect"
+        >
+
+
+
+    </FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        >
+
+        <TextView
+            android:id="@+id/Create2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Belum Terdaftar ? Daftar Aplikasi"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/wolf"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/logonj"
+            android:textColor="#ffffff" />
+
+
+
+    <TextView
+        android:id="@+id/signin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Masuk Aplikasi"
+        android:textColor="#ffffff"
+        android:textSize="19dp"
+        android:padding="16dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rect"
+        android:layout_marginBottom="35dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-05dp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nomorr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="250dp"
+                android:background="@drawable/rect1"
+                android:drawableLeft="@drawable/ic_phone"
+                android:drawablePadding="16dp"
+                android:hint="Nomer Handphone"
+                android:inputType="phone"
+                android:paddingBottom="16dp"
+                android:paddingLeft="20dp"
+                android:paddingTop="16dp"
+                android:textColor="#fff"
+                android:textColorHint="#ffffff"></EditText>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
