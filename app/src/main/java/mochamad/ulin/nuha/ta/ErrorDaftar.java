@@ -24,8 +24,8 @@ public class ErrorDaftar extends AppCompatActivity implements View.OnClickListen
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.signinin:
-            /*Intent pindah1 = new Intent(this, Login.class);
-            startActivity(pindah1);*/
+            Intent pindah1 = new Intent(this, Login.class);
+            startActivity(pindah1);
             break;
         }
     }

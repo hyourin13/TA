@@ -59,7 +59,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.Create2:
-                Intent pindah = new Intent(this, ErrorDaftar.class);
+                Intent pindah = new Intent(this, Login.class);
                 startActivity(pindah);
                 break;
             case R.id.signin:
