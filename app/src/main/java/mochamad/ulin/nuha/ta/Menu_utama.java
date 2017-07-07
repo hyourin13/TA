@@ -1,9 +1,12 @@
 package mochamad.ulin.nuha.ta;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
+import android.view.Menu;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
@@ -21,6 +24,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
     private ViewFlipper mViewFlipper,mViewFlipper1,mViewFlipper2,mViewFlipper3,mViewFlipper4,mViewFlipper5,mViewFlipper6;
 
     LinearLayout btn_akun, btn_maps, btn_radio,btn_website,btn_alumni,btn_dunia;
+    String no_hp;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -28,6 +32,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.menu_utama);
         initViews();
         futar();
+        bacaPreferensi();
 
 
     }
@@ -141,9 +146,20 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
 
                 break;
             case R.id.btn_dunia:
-
+                skipActivity(Menu_Lokasi_All.class);
+              /*  final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Menu_utama.this);
+                alertDialog.setTitle("Gagal");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Selesaikan Dulu yang Lokasi");
+                alertDialog.show();*/
                 break;
 
         }
+    }
+
+
+    private void bacaPreferensi() {
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        no_hp = pref.getString("no_hp", "0");
     }
 }

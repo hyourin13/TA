@@ -50,7 +50,15 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
         hp.setTypeface(custom_font);
         daftar.setOnClickListener(this);
         masuk.setOnClickListener(this);
+        bacaPreferensi();
+        Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
+        if (no_hp.toString().equals("0")){
 
+        }else {
+            Intent i = new Intent(Signin.this, Menu_utama.class);
+            startActivity(i);
+            finish();
+        }
        // Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
     }
 
@@ -134,7 +142,6 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                         SharedPreferences.Editor editor = pref.edit();
                         editor.putString("no_hp", no_hp);
-                        // editor.putString("token", "1");
                         editor.commit();
                         finish();
 
