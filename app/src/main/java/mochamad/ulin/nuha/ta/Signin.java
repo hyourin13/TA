@@ -17,10 +17,12 @@ import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -32,10 +34,30 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     EditText hp;
     Server con = new Server();
     private ProgressDialog pDialog;
+    String no_hp;
+    HashMap<String, String> map;
+    ProgressDialog progressDialog;
+    JSONParser jsonParser = new JSONParser();
+    ArrayList<HashMap<String, String>> tampil = new ArrayList<HashMap<String, String>>();
+    public static String TAGnis = "nis";
+    public static String TAGnama = "nama";
+    public static String TAGlat = "lat";
+    public static String TAGlng = "lng";
+    public static String TAGemail = "email";
+    public static String TAGdidik = "pendidikan";
+    public static String TAGkerja = "pekerjaan";
+    public static String TAGwil = "wilayah";
+    public static String TAGhp = "no_hp";
+    public static String TAGfoto = "foto";
+    public static String TAGdevice = "device";
+    public static String TAGtoken = "token";
+    public static String TAGalamat = "alamat";
     int success;
     private static final String TAG_SUCCESS = "success";
-    JSONParser jsonParser = new JSONParser();
-    String no_hp;
+    private static final String TAG_hasil = "Hasil";
+    JSONArray string_json = null;
+
+    String nis, nama, lat,lngg,email,didik,kerja, wilayah, hpp, foto,device, token,alamat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +73,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
         daftar.setOnClickListener(this);
         masuk.setOnClickListener(this);
         bacaPreferensi();
-        Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
         if (no_hp.toString().equals("0")){
 
         }else {
@@ -103,7 +125,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             params.add(new BasicNameValuePair("no_hp", no_hp));
             System.out.println(params);
 
-            // Melakukan Proses Request HTTP Post dengan Parameter yang ada
+            /*// Melakukan Proses Request HTTP Post dengan Parameter yang ada
             JSONObject json = jsonParser.makeHttpRequest(con.URL + "view_cari_alumni.php", "POST",
                     params);
 
@@ -118,15 +140,51 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
 
             } catch (JSONException e) {
                 e.printStackTrace();
+            }*/
+
+            JSONObject json = jsonParser.makeHttpRequest(con.URL + "view_cari_alumni.php", "POST",
+                    params);
+
+            // menampilkan log JSON pada logcat
+            Log.d("Create Response", json.toString());
+
+            // check untuk proses penyimpanan
+
+            try {
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
+                    JSONObject hasil = Object_hasil.getJSONObject(0);
+                    nis = hasil.getString(TAGnis);
+                    nama = hasil.getString(TAGnama);
+                    lat = hasil.getString(TAGlat);
+                    lngg = hasil.getString(TAGlng);
+                    email = hasil.getString(TAGemail);
+                    didik = hasil.getString(TAGdidik);
+                    kerja = hasil.getString(TAGkerja);
+                    wilayah = hasil.getString(TAGwil);
+                    hpp = hasil.getString(TAGhp);
+                    foto = hasil.getString(TAGfoto);
+                    device = hasil.getString(TAGdevice);
+                    token = hasil.getString(TAGtoken);
+                    alamat = hasil.getString(TAGalamat);
+
+                }else{
+                    // hasil Tidak ditemukan
+                    System.out.println("Data Tidak Ditemukan");
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
 
             return null;
         }
 
-        /**
+            /**
          * Setalah selesai dialog menghilang
          **/
         protected void onPostExecute(String file_url) {
+
             if (success == 1) {
 
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
@@ -142,6 +200,19 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                         SharedPreferences.Editor editor = pref.edit();
                         editor.putString("no_hp", no_hp);
+                        editor.putString("nis", nis);
+                        editor.putString("nama", nama);
+                        editor.putString("wilayah", wilayah);
+                        editor.putString("didik", didik);
+                        editor.putString("email", email);
+                        editor.putString("kerja", kerja);
+                        editor.putString("lat", lat);
+                        editor.putString("lngg", lngg);
+                        editor.putString("hpp", hpp);
+                        editor.putString("foto", foto);
+                        editor.putString("device", device);
+                        editor.putString("token", token);
+                        editor.putString("alamat", alamat);
                         editor.commit();
                         finish();
 

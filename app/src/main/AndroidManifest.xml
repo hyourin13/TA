@@ -62,7 +62,7 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Menu_Lokasi_All"
-            android:label="@string/title_activity_maps"
+            android:label="@string/title_activity_mapss"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".ErrorDaftar"

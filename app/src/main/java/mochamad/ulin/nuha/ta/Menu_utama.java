@@ -24,7 +24,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
     private ViewFlipper mViewFlipper,mViewFlipper1,mViewFlipper2,mViewFlipper3,mViewFlipper4,mViewFlipper5,mViewFlipper6;
 
     LinearLayout btn_akun, btn_maps, btn_radio,btn_website,btn_alumni,btn_dunia;
-    String no_hp;
+    String no_hp,lat,lngg;
 
     @Override
     protected void onCreate( Bundle savedInstanceState) {
@@ -33,7 +33,13 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         initViews();
         futar();
         bacaPreferensi();
+        if (no_hp.toString().equals("0")){
 
+        }else {
+            Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, lat, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, lngg, Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -161,5 +167,8 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
     private void bacaPreferensi() {
         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
         no_hp = pref.getString("no_hp", "0");
+        lat = pref.getString("lat", "0");
+        lngg = pref.getString("lngg", "0");
+
     }
 }
