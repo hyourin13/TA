@@ -149,15 +149,10 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                  skipActivity(Activity_Web.class);
                 break;
             case R.id.btn_alumni:
-
+                skipActivity(Menu_Alumni.class);
                 break;
             case R.id.btn_dunia:
                 skipActivity(Menu_Lokasi_All.class);
-              /*  final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Menu_utama.this);
-                alertDialog.setTitle("Gagal");
-                alertDialog.setCancelable(false);
-                alertDialog.setMessage("Selesaikan Dulu yang Lokasi");
-                alertDialog.show();*/
                 break;
 
         }

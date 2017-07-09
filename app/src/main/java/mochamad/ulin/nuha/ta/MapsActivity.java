@@ -350,7 +350,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         /**
-         * Receives data sent from FetchAddressIntentService and updates the UI in MainActivity.
+         * Receives data sent from FetchAddressIntentService and updates the UI in Menu_Alumni.
          */
         @Override
         protected void onReceiveResult(int resultCode, Bundle resultData) {
