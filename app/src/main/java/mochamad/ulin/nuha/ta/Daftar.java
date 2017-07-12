@@ -49,6 +49,7 @@ public class Daftar extends AppCompatActivity {
     String lat_jemput, long_jemput, alamat;
     EditText edlokasi;
     String lat,loog,nisss;
+    String nis_pref,no_hp1,status_kirim;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,9 +58,18 @@ public class Daftar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar22);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        nis2 = bundle.getString("NIS");
+        bacaPreferensi();
+        if (no_hp1.toString().equals("0")){
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+            nis2 = bundle.getString("NIS");
+            status_kirim = "masuk";
+        }else {
+            Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
+            nis2 = nis_pref;
+            status_kirim = "ubah";
+        }
+
         setTitle("Pilih Lokasi Rumah Anda");
         edlokasi = (EditText) findViewById(R.id.ed_lokasi);
         btlanjut = (Button) findViewById(R.id.btlanjut);
@@ -142,10 +152,7 @@ public class Daftar extends AppCompatActivity {
             params.add(new BasicNameValuePair("lat", lat));
             params.add(new BasicNameValuePair("nisss", nisss));
             params.add(new BasicNameValuePair("loog", loog));
-            System.out.println(alamat);
-            System.out.println(lat_jemput);
-            System.out.println(nis2);
-            System.out.println(long_jemput);
+            params.add(new BasicNameValuePair("status_kirim", status_kirim));
             System.out.println(params);
 
             // Melakukan Proses Request HTTP Post dengan Parameter yang ada
@@ -183,5 +190,12 @@ public class Daftar extends AppCompatActivity {
             pDialog.dismiss();
         }
     }
+
+    private void bacaPreferensi() {
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        no_hp1 = pref.getString("no_hp", "0");
+        nis_pref = pref.getString("nis", "0");
+    }
+
 
 }

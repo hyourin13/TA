@@ -64,6 +64,10 @@
             android:label="@string/title_activity_mapss"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".Pilihan"
+            android:label="@string/title_activity_mapss"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".Menu_Alumni"
             android:label="@string/title_activity_alumni"
             android:theme="@style/AppTheme" />
@@ -105,7 +109,7 @@
                     sign the APK for publishing.
                     You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity android:name=".Pilihan"></activity>
+
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -48,7 +49,7 @@ public class ScrollingActivity extends AppCompatActivity {
     String refreshedToken,device_id;
     Server con = new Server();
     Button btok;
-
+    String nis_pref,no_hp1,status_kirim;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +68,19 @@ public class ScrollingActivity extends AppCompatActivity {
         edkerja = (EditText) findViewById(R.id.input_kerja);
         edwilayah = (EditText) findViewById(R.id.input_wilayah);
         btok = (Button) findViewById(R.id.btn_simpan);
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        terimanis = bundle.getString("NIS");
-        ednis.setText(terimanis);
+        bacaPreferensi();
+        if (no_hp1.toString().equals("0")){
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+            terimanis = bundle.getString("NIS");
+            ednis.setText(terimanis);
+            status_kirim = "masuk";
+        }else {
+            Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
+            ednis.setText(nis_pref);
+            status_kirim = "ubah";
+        }
+        Toast.makeText(this, status_kirim, Toast.LENGTH_SHORT).show();
         btok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,6 +123,7 @@ public class ScrollingActivity extends AppCompatActivity {
             params.add(new BasicNameValuePair("device", device));
             params.add(new BasicNameValuePair("no_hp", no_hp));
             params.add(new BasicNameValuePair("fnltoken", fnltoken));
+            params.add(new BasicNameValuePair("status_kirim", status_kirim));
             System.out.println(params);
 
             // Melakukan Proses Request HTTP Post dengan Parameter yang ada
@@ -139,23 +150,30 @@ public class ScrollingActivity extends AppCompatActivity {
          **/
         protected void onPostExecute(String file_url) {
             if (success == 1) {
+                if (status_kirim.equalsIgnoreCase("masuk")){
+                    final AlertDialog.Builder alertDialog12 = new AlertDialog.Builder(ScrollingActivity.this);
+                    alertDialog12.setTitle("BERHASIL");
+                    alertDialog12.setCancelable(false);
+                    alertDialog12.setMessage("Terima kasih Atas telah mendaftar sebagai . \nAlumni Nurul Jadid ");
+                    alertDialog12.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(ScrollingActivity.this);
-                alertDialog.setTitle("BERHASIL");
-                alertDialog.setCancelable(false);
-                alertDialog.setMessage("Terima kasih Atas telah mendaftar sebagai . \nAlumni Nurul Jadid ");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                            Intent i = new Intent(ScrollingActivity.this, Daftar.class);
+                            i.putExtra("NIS", nis);
+                            startActivity(i);
+                            //Toast.makeText(ScrollingActivity.this, nis, Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    alertDialog12.show();
+                    finish();
+                }else  if (status_kirim.equalsIgnoreCase("ubah")){
+                    startActivity(new Intent(ScrollingActivity.this,Menu_utama.class));
+                    finish();
+                }
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        Intent i = new Intent(ScrollingActivity.this, Daftar.class);
-                        i.putExtra("NIS", nis);
-                        startActivity(i);
-                        //Toast.makeText(ScrollingActivity.this, nis, Toast.LENGTH_LONG).show();
-                    }
-                });
-                alertDialog.show();
+
             }else {
                 Toast.makeText(ScrollingActivity.this, "Data Belum Lengkap", Toast.LENGTH_SHORT).show();
             }
@@ -202,6 +220,12 @@ public class ScrollingActivity extends AppCompatActivity {
             public void onError(final AccountKitError error) {
             }
         });
+    }
+
+    private void bacaPreferensi() {
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        no_hp1 = pref.getString("no_hp", "0");
+        nis_pref = pref.getString("nis", "0");
     }
 
 }

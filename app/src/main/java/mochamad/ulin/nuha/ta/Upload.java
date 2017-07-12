@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
@@ -21,6 +22,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.facebook.accountkit.Account;
+import com.facebook.accountkit.AccountKit;
+import com.facebook.accountkit.AccountKitCallback;
+import com.facebook.accountkit.AccountKitError;
+import com.facebook.accountkit.PhoneNumber;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -39,10 +46,13 @@ public class Upload extends AppCompatActivity {
     String url_upload = kon.URL + "upload.php";
     private Bitmap bitmap;
     private ImageView imageView;
-    String nis2;
+    String nis2,nis_pref,status_kirim;
     Integer nis;
     Button btsend;
     private Uri filePath;
+    String phonee;
+    String no_hp;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +65,6 @@ public class Upload extends AppCompatActivity {
             }
         });
         btsend = (Button) findViewById(R.id.button10);
-
-
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        nis2 = bundle.getString("NIS");
-        //nis2 = String.valueOf(nis);
-        //Toast.makeText(Uploadddd.this, nis2, Toast.LENGTH_LONG).show();
-
         btsend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +75,38 @@ public class Upload extends AppCompatActivity {
                 }
             }
         });
+
+        bacaPreferensi();
+        if (no_hp.toString().equals("0")){
+            Intent intent = getIntent();
+            Bundle bundle = intent.getExtras();
+            nis2 = bundle.getString("NIS");
+            status_kirim = "masuk";
+        }else {
+            Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
+            nis2 = nis_pref;
+            status_kirim = "ubah";
+        }
+
+
+        //nis2 = String.valueOf(nis);
+        //Toast.makeText(Uploadddd.this, nis2, Toast.LENGTH_LONG).show();
+
+        AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+            @Override
+            public void onSuccess(final Account account) {
+                final PhoneNumber number = account.getPhoneNumber();
+                phonee = number == null ? null : number.toString();
+                //Toast.makeText(MainActivity.this, phonee, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(MainActivity.this, number == null ? null : number.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(final AccountKitError error) {
+            }
+        });
+
+
     }
     private void uploadImage() {
         class UploadImage extends AsyncTask<Bitmap, Void, String> {
@@ -92,9 +126,19 @@ public class Upload extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
-                Intent i = new Intent(Upload.this, Menu_utama.class);
-                startActivity(i);
-                finish();
+                if (no_hp.toString().equals("0")){
+                    startActivity(new Intent(Upload.this,Menu_utama.class));
+                    SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("no_hp", phonee);
+                    editor.putString("nis", nis2);
+                    editor.commit();
+                    finish();
+                }else {
+                    startActivity(new Intent(Upload.this,Menu_utama.class));
+                    finish();
+                }
+
 
                 //Toast.makeText(Uploadddd.this, s, Toast.LENGTH_SHORT).show();
 
@@ -108,6 +152,7 @@ public class Upload extends AppCompatActivity {
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("image", uploadImage);
                 data.put("nis",nis2);
+                data.put("status_kirim",status_kirim);
                 String result = rh.sendPostRequest(url_upload, data);
 
                 return result;
@@ -246,6 +291,12 @@ public class Upload extends AppCompatActivity {
         }
 
         imageView.setImageBitmap(bitmap);
+    }
+
+    private void bacaPreferensi() {
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        no_hp = pref.getString("no_hp", "0");
+        nis_pref = pref.getString("nis", "0");
     }
 
 
