@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">TA</string>
+    <string name="app_name">NurJa Alumni</string>
     <string name="title_activity_web">Website Nurul Jadid</string>
     <string name="title_activity_radio">Radio Nurul Jadid</string>
     <string name="title_activity_maps">Lokasi</string>
     <string name="title_activity_mapss">Peta Lokasi Alumni</string>
     <string name="title_activity_alumni">Daftar Alumni</string>
+    <string name="title_activity_akun">Menu Akun</string>
     <string name="facebook_app_id">1390449167704658</string>
     <string name="account_kit_client_token">88d2c451bb471e69cf52f1cb607ea456</string>
 
@@ -133,6 +134,9 @@
     </string>
     <string name="title_activity_contoh">Map</string>
     <string name="title_activity_ccont">Map</string>
+    <string name="title_activity_z">Map</string>
+    <string name="title_activity_scrolll">Scrolll</string>
+    <string name="action_settings">Settings</string>
 
 
 </resources>

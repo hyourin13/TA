@@ -24,13 +24,13 @@
 
                 <ImageView
                     android:id="@+id/iimg2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/dota1" />
+                    android:src="@drawable/gmbr2" />
 
 
             </FrameLayout>
@@ -41,13 +41,13 @@
 
                 <ImageView
                     android:id="@+id/iimg3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/dota2" />
+                    android:src="@drawable/logonj" />
 
             </FrameLayout>
 
@@ -59,13 +59,13 @@
 
                 <ImageView
                     android:id="@+id/iimg4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/app_name"
                     android:scaleType="fitXY"
-                    android:src="@drawable/dota3" />
+                    android:src="@drawable/gmbr1" />
 
 
             </FrameLayout>

@@ -26,7 +26,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_loogo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
         <activity android:name=".Signin">
@@ -56,6 +56,10 @@
             android:value="@string/account_kit_client_token" />
 
         <activity
+            android:name=".DetailNews"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".Menu_Lokasi"
             android:label="@string/title_activity_maps"
             android:theme="@style/AppTheme" />
@@ -65,12 +69,15 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Pilihan"
-            android:label="@string/title_activity_mapss"
-            android:theme="@style/AppTheme" />
+            android:label="@string/title_activity_akun"
+            android:theme="@style/Theme.Swipe.Back" />
         <activity
             android:name=".Menu_Alumni"
             android:label="@string/title_activity_alumni"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Detail"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".ErrorDaftar"
             android:theme="@style/AppThemeNoActionBar" />
@@ -100,6 +107,9 @@
         <activity
             android:name=".Daftar"
             android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Detail_Home"
+            android:theme="@style/AppThemeNoActionBar" />
 
         <!--
                     The API key for Google Maps-based APIs is defined as a string resource.
@@ -110,6 +120,13 @@
                     You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
 
+        <activity
+            android:name=".Z"
+            android:label="@string/title_activity_z" />
+        <activity
+            android:name=".Scrolll"
+            android:label="@string/title_activity_scrolll"
+            android:theme="@style/AppThemeNoActionBar"></activity>
     </application>
 
 </manifest>

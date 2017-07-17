@@ -57,7 +57,7 @@ public class ScrollingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scrolling);
 
         refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Toast.makeText(this, refreshedToken, Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, refreshedToken, Toast.LENGTH_SHORT).show();
         TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         device_id = tm.getDeviceId();
         Toast.makeText(this, device_id, Toast.LENGTH_SHORT).show();
@@ -151,7 +151,10 @@ public class ScrollingActivity extends AppCompatActivity {
         protected void onPostExecute(String file_url) {
             if (success == 1) {
                 if (status_kirim.equalsIgnoreCase("masuk")){
-                    final AlertDialog.Builder alertDialog12 = new AlertDialog.Builder(ScrollingActivity.this);
+                    Intent i = new Intent(ScrollingActivity.this, Daftar.class);
+                    i.putExtra("NIS", nis);
+                    startActivity(i);
+                    /*final AlertDialog.Builder alertDialog12 = new AlertDialog.Builder(ScrollingActivity.this);
                     alertDialog12.setTitle("BERHASIL");
                     alertDialog12.setCancelable(false);
                     alertDialog12.setMessage("Terima kasih Atas telah mendaftar sebagai . \nAlumni Nurul Jadid ");
@@ -160,16 +163,14 @@ public class ScrollingActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             // TODO Auto-generated method stub
-                            Intent i = new Intent(ScrollingActivity.this, Daftar.class);
-                            i.putExtra("NIS", nis);
-                            startActivity(i);
+
                             //Toast.makeText(ScrollingActivity.this, nis, Toast.LENGTH_LONG).show();
                         }
                     });
-                    alertDialog12.show();
+                    alertDialog12.show();*/
                     finish();
                 }else  if (status_kirim.equalsIgnoreCase("ubah")){
-                    startActivity(new Intent(ScrollingActivity.this,Menu_utama.class));
+                    startActivity(new Intent(ScrollingActivity.this,Pilihan.class));
                     finish();
                 }
 
@@ -213,7 +214,7 @@ public class ScrollingActivity extends AppCompatActivity {
             public void onSuccess(final Account account) {
                 final PhoneNumber number = account.getPhoneNumber();
                 phonee = number == null ? null : number.toString();
-                Toast.makeText(ScrollingActivity.this, phonee, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(ScrollingActivity.this, phonee, Toast.LENGTH_SHORT).show();
             }
 
             @Override

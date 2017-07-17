@@ -5,4 +5,7 @@
     <color name="colorAccent">#0088ff</color>
     <color name="color_radio">#8989ff</color>
     <color name="color_web">#3b3bff</color>
+    <color name="BlueMilitary">#f7ff00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_trans">#99FFFFFF</color>
 </resources>

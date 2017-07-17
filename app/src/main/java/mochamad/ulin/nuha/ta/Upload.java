@@ -88,6 +88,8 @@ public class Upload extends AppCompatActivity {
             status_kirim = "ubah";
         }
 
+        Toast.makeText(this, status_kirim, Toast.LENGTH_SHORT).show();
+
 
         //nis2 = String.valueOf(nis);
         //Toast.makeText(Uploadddd.this, nis2, Toast.LENGTH_LONG).show();
@@ -135,7 +137,7 @@ public class Upload extends AppCompatActivity {
                     editor.commit();
                     finish();
                 }else {
-                    startActivity(new Intent(Upload.this,Menu_utama.class));
+                    startActivity(new Intent(Upload.this,Pilihan.class));
                     finish();
                 }
 

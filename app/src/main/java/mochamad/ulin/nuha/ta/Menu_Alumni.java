@@ -2,12 +2,15 @@ package mochamad.ulin.nuha.ta;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -57,7 +60,7 @@ public class Menu_Alumni extends SwipeBackActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alumni2);
-        //setDragEdge(SwipeBackLayout.DragEdge.LEFT);
+        setDragEdge(SwipeBackLayout.DragEdge.LEFT);
         gridView = (GridView) findViewById(R.id.gridView);
 
         images = new ArrayList<>();
@@ -67,6 +70,24 @@ public class Menu_Alumni extends SwipeBackActivity {
 
         //Calling the getData method
         getData();
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+               // Toast.makeText(Menu_Alumni.this, , Toast.LENGTH_SHORT).show();
+                String coba = nis.get(position);
+                Toast.makeText(Menu_Alumni.this, coba, Toast.LENGTH_SHORT).show();
+                // gridView.getAdapter().getItem(position);
+                Intent i = new Intent(Menu_Alumni.this, Detail.class);
+                i.putExtra("NIS", coba);
+                startActivity(i);
+
+
+            }
+        });
 
 
     }

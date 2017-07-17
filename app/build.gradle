@@ -34,8 +34,7 @@ dependencies {
     // loading bar
     //swipe back
     compile project(':library')
-    compile project(':picasso-2.5.2')
-
+    compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.github.d-max:spots-dialog:0.6'
     compile 'com.github.liuguangqiang.prettyprogressbar:library:+'

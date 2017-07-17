@@ -1,12 +1,23 @@
 package mochamad.ulin.nuha.ta;
 
+import android.*;
+import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Typeface;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -30,6 +41,10 @@ import java.util.List;
  */
 
 public class Signin extends AppCompatActivity implements View.OnClickListener {
+    String[] PERMISSIONS = { android.Manifest.permission.READ_PHONE_STATE,android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.CALL_PHONE, android.Manifest.permission.READ_SMS, android.Manifest.permission.READ_CONTACTS, android.Manifest.permission.WRITE_CONTACTS, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    int PERMISSION_ALL = 99;
+    private static int MY_REQUEST_CODE = 1;
+    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     TextView daftar,masuk;
     EditText hp;
     Server con = new Server();
@@ -81,7 +96,130 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
             finish();
         }
+
+        cekkameraMashmellow();
+        ceklokasiMashmellow();
+        checkLocationPermission();
+
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkinfo = connMgr.getActiveNetworkInfo();
+        if (networkinfo != null && networkinfo.isConnected()) {
+        } else {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
+            alertDialog.setTitle("Koneksi");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Maaf ada masalah dengan koneksi, coba periksa koneksi internet anda.");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent callGPSSettingIntent = new Intent(
+                            Settings.ACTION_WIRELESS_SETTINGS);
+                    startActivity(callGPSSettingIntent);
+                    finish();
+                }
+            });
+            alertDialog.show();
+        }
+        LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+
+        } else {
+            showGPSDisabledAlertToUser();
+        }
        // Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
+    }
+
+
+    private void showGPSDisabledAlertToUser() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        alertDialogBuilder.setCancelable(false);
+        alertDialogBuilder.setMessage("GPS pada perangkat anda sedang non-aktif. silakan mengaktifkan?")
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent callGPSSettingIntent = new Intent(
+                                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                                startActivity(callGPSSettingIntent);
+                                finish();
+                            }
+                        });
+        AlertDialog alert = alertDialogBuilder.create();
+        alert.show();
+    }
+
+    public void cekkameraMashmellow() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.d("MyApp", "SDK >= 23");
+            if (this.checkSelfPermission(android.Manifest.permission.CAMERA)
+                    != PackageManager.PERMISSION_GRANTED) {
+                Log.d("MyApp", "Request permission");
+                ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.CAMERA},
+                        MY_REQUEST_CODE);
+                ActivityCompat.requestPermissions(Signin.this, new String[]{android.Manifest.permission.CAMERA},
+                        MY_REQUEST_CODE);
+            }
+        } else {
+            Log.d("MyApp", "Android < 6.0");
+        }
+    }
+
+    public void ceklokasiMashmellow() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.d("MyApp", "SDK >= 23");
+            if (this.checkSelfPermission(android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+                Log.d("MyApp", "Request permission");
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_REQUEST_CODE);
+                ActivityCompat.requestPermissions(Signin.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_REQUEST_CODE);
+            }
+        } else {
+            Log.d("MyApp", "Android < 6.0");
+        }
+    }
+
+    public boolean checkLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission. ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission. ACCESS_FINE_LOCATION)) {
+
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+                new AlertDialog.Builder(this)
+                        .setTitle("Permission Location")
+                        .setMessage("Give Acces ")
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Prompt the user once explanation has been shown
+                                ActivityCompat.requestPermissions(Signin.this,
+                                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                                        MY_PERMISSIONS_REQUEST_LOCATION);
+                            }
+                        })
+                        .create()
+                        .show();
+
+
+            } else {
+                // No explanation needed, we can request the permission.
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission. ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_REQUEST_LOCATION);
+            }
+            return false;
+        } else {
+            return true;
+        }
     }
 
 
@@ -246,6 +384,34 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     private void bacaPreferensi() {
         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
         no_hp = pref.getString("no_hp", "0");
+    }
+
+    public void askPermission() {
+        for (String permission : PERMISSIONS) {
+            if (ActivityCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    requestPermissions(PERMISSIONS, PERMISSION_ALL);
+                }
+                return;
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults) {
+
+        switch (requestCode) {
+            case 1: {
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
+
+
+                } else {
+                    Toast.makeText(this, "Until you grant the permission, we cannot proceed further", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+        }
     }
 
 

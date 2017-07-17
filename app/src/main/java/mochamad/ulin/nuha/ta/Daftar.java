@@ -69,7 +69,7 @@ public class Daftar extends AppCompatActivity {
             nis2 = nis_pref;
             status_kirim = "ubah";
         }
-
+        Toast.makeText(this, status_kirim, Toast.LENGTH_SHORT).show();
         setTitle("Pilih Lokasi Rumah Anda");
         edlokasi = (EditText) findViewById(R.id.ed_lokasi);
         btlanjut = (Button) findViewById(R.id.btlanjut);
@@ -178,10 +178,22 @@ public class Daftar extends AppCompatActivity {
          **/
         protected void onPostExecute(String file_url) {
             if (success == 1) {
-                Intent i = new Intent(Daftar.this, Upload.class);
-                i.putExtra("NIS", nis2);
-                startActivity(i);
-                finish();
+                if (status_kirim.equalsIgnoreCase("masuk")){
+                    Intent i = new Intent(Daftar.this, Upload.class);
+                    i.putExtra("NIS", nis2);
+                    startActivity(i);
+                    SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("lat", lat);
+                    editor.putString("lngg", loog);
+                    editor.commit();
+                    finish();
+                }else{
+                    startActivity(new Intent(Daftar.this,Pilihan.class));
+                    finish();
+                }
+
+
             } else if (success == 0) {
                 Toast.makeText(Daftar.this, "Gagal Menyimpan", Toast.LENGTH_SHORT).show();
             } else {
@@ -196,6 +208,8 @@ public class Daftar extends AppCompatActivity {
         no_hp1 = pref.getString("no_hp", "0");
         nis_pref = pref.getString("nis", "0");
     }
+
+
 
 
 }

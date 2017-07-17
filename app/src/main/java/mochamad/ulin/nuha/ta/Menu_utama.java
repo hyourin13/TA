@@ -47,7 +47,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         //puter atas
         mViewFlipper = (ViewFlipper) this.findViewById(R.id.image_view_flipper);
         mViewFlipper.setAutoStart(false);
-        mViewFlipper.setFlipInterval(4000);
+        mViewFlipper.setFlipInterval(5000);
         mViewFlipper.startFlipping();
         mViewFlipper.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
         mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
@@ -137,7 +137,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_akun:
-
+                skipActivity(Pilihan.class);
                 break;
             case R.id.btn_maps:
                 skipActivity(Menu_Lokasi.class);
