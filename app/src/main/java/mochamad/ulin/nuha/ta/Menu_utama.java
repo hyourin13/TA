@@ -21,9 +21,9 @@ import com.google.firebase.iid.FirebaseInstanceId;
  */
 
 public class Menu_utama extends AppCompatActivity implements View.OnClickListener {
-    private ViewFlipper mViewFlipper,mViewFlipper1,mViewFlipper2,mViewFlipper3,mViewFlipper4,mViewFlipper5,mViewFlipper6;
+    private ViewFlipper mViewFlipper;
 
-    LinearLayout btn_akun, btn_maps, btn_radio,btn_website,btn_alumni,btn_dunia;
+    LinearLayout btn_akun, btn_maps,btn_nj1,btn_alumni,btn_dunia;
     String no_hp,lat,lngg;
 
     @Override
@@ -33,8 +33,12 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         initViews();
         futar();
         bacaPreferensi();
+        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Toast.makeText(this, refreshedToken, Toast.LENGTH_LONG).show();
         if (no_hp.toString().equals("0")){
-
+            Intent i = new Intent(Menu_utama.this, Signin.class);
+            startActivity(i);
+            finish();
         }else {
             Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, lat, Toast.LENGTH_SHORT).show();
@@ -53,59 +57,6 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         mViewFlipper.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
         mViewFlipper.showNext();
 
-        //puter kanan atas
-        mViewFlipper1 = (ViewFlipper) this.findViewById(R.id.image_view_flipper2);
-        mViewFlipper1.setAutoStart(false);
-        mViewFlipper1.setFlipInterval(2000);
-        mViewFlipper1.startFlipping();
-        mViewFlipper1.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-        mViewFlipper1.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
-        mViewFlipper1.showNext();
-
-        //puter kiri atas
-        mViewFlipper2 = (ViewFlipper) this.findViewById(R.id.image_view_flipper3);
-        mViewFlipper2.setAutoStart(false);
-        mViewFlipper2.setFlipInterval(2250);
-        mViewFlipper2.startFlipping();
-        mViewFlipper2.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-        mViewFlipper2.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
-        mViewFlipper2.showNext();
-
-        //puter kanan tengah
-        mViewFlipper3 = (ViewFlipper) this.findViewById(R.id.image_view_flipper4);
-        mViewFlipper3.setAutoStart(false);
-        mViewFlipper3.setFlipInterval(2250);
-        mViewFlipper3.startFlipping();
-        mViewFlipper3.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-        mViewFlipper3.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
-        mViewFlipper3.showNext();
-
-        //puter kiri tengah
-        mViewFlipper4 = (ViewFlipper) this.findViewById(R.id.image_view_flipper5);
-        mViewFlipper4.setAutoStart(false);
-        mViewFlipper4.setFlipInterval(2000);
-        mViewFlipper4.startFlipping();
-        mViewFlipper4.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-        mViewFlipper4.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
-        mViewFlipper4.showNext();
-
-        //puter kanan bawah
-        mViewFlipper5 = (ViewFlipper) this.findViewById(R.id.image_view_flipper6);
-        mViewFlipper5.setAutoStart(false);
-        mViewFlipper5.setFlipInterval(2000);
-        mViewFlipper5.startFlipping();
-        mViewFlipper5.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-        mViewFlipper5.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
-        mViewFlipper5.showNext();
-
-        //puter kiri bawah
-        mViewFlipper6 = (ViewFlipper) this.findViewById(R.id.image_view_flipper7);
-        mViewFlipper6.setAutoStart(false);
-        mViewFlipper6.setFlipInterval(2250);
-        mViewFlipper6.startFlipping();
-        mViewFlipper6.setInAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in));
-        mViewFlipper6.setOutAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_out));
-        mViewFlipper6.showNext();
     }
 
     private void initViews() {
@@ -115,17 +66,14 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         btn_maps = (LinearLayout) findViewById(R.id.btn_maps);
         btn_maps.setOnClickListener(this);
 
-        btn_radio = (LinearLayout) findViewById(R.id.btn_radio);
-        btn_radio.setOnClickListener(this);
-
-        btn_website = (LinearLayout) findViewById(R.id.btn_website);
-        btn_website.setOnClickListener(this);
-
         btn_alumni = (LinearLayout) findViewById(R.id.btn_alumni);
         btn_alumni.setOnClickListener(this);
 
         btn_dunia = (LinearLayout) findViewById(R.id.btn_dunia);
         btn_dunia.setOnClickListener(this);
+
+        btn_nj1 = (LinearLayout) findViewById(R.id.btn_nj);
+        btn_nj1.setOnClickListener(this);
     }
 
     private void skipActivity(Class<?> classOf) {
@@ -142,17 +90,14 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
             case R.id.btn_maps:
                 skipActivity(Menu_Lokasi.class);
                 break;
-            case R.id.btn_radio:
-                skipActivity(Activity_Radio.class);
-                break;
-            case R.id.btn_website:
-                 skipActivity(Activity_Web.class);
+            case R.id.btn_dunia:
+                 skipActivity(Menu_Lokasi_All.class);
                 break;
             case R.id.btn_alumni:
                 skipActivity(Menu_Alumni.class);
                 break;
-            case R.id.btn_dunia:
-                skipActivity(Menu_Lokasi_All.class);
+            case R.id.btn_nj:
+                skipActivity(Activity_NJ.class);
                 break;
 
         }

@@ -6,8 +6,8 @@
     <string name="title_activity_mapss">Peta Lokasi Alumni</string>
     <string name="title_activity_alumni">Daftar Alumni</string>
     <string name="title_activity_akun">Menu Akun</string>
-    <string name="facebook_app_id">1390449167704658</string>
-    <string name="account_kit_client_token">88d2c451bb471e69cf52f1cb607ea456</string>
+    <string name="facebook_app_id">508377842833493</string>
+    <string name="account_kit_client_token">e9c4b09dca897a6e888496f5574b169b</string>
 
     //mapss
     <string name="no_geocoder_available">No geocoder available</string>

@@ -87,20 +87,6 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
         hp.setTypeface(custom_font);
         daftar.setOnClickListener(this);
         masuk.setOnClickListener(this);
-        bacaPreferensi();
-        //Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
-        if (no_hp.toString().equals("0")){
-
-        }else {
-            Intent i = new Intent(Signin.this, Menu_utama.class);
-            startActivity(i);
-            finish();
-        }
-
-        cekkameraMashmellow();
-        ceklokasiMashmellow();
-        checkLocationPermission();
-
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkinfo = connMgr.getActiveNetworkInfo();
         if (networkinfo != null && networkinfo.isConnected()) {
@@ -125,6 +111,16 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
 
         } else {
             showGPSDisabledAlertToUser();
+        }
+
+        bacaPreferensi();
+        askPermission();
+        if (no_hp.toString().equals("0")){
+
+        }else {
+            Intent i = new Intent(Signin.this, Menu_utama.class);
+            startActivity(i);
+            finish();
         }
        // Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
     }
@@ -290,6 +286,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
 
             try {
                 success = json.getInt(TAG_SUCCESS);
+              //  System.out.println(success);
                 if (success == 1) {
                     JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
                     JSONObject hasil = Object_hasil.getJSONObject(0);
@@ -307,7 +304,12 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                     token = hasil.getString(TAGtoken);
                     alamat = hasil.getString(TAGalamat);
 
-                }else{
+                }else  if (success == 5){
+                    JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
+                    JSONObject hasil = Object_hasil.getJSONObject(0);
+                    nis = hasil.getString(TAGnis);
+                    nama = hasil.getString(TAGnama);
+                } else {
                     // hasil Tidak ditemukan
                     System.out.println("Data Tidak Ditemukan");
                 }
@@ -356,10 +358,25 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
 
                     }
                 });
-
-
                 alertDialog.show();
-            }else {
+            }else  if (success == 5) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
+                alertDialog.setTitle("Sukses");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Data Tidak Lengkap, Mohon Dilengkapi");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        Intent i = new Intent(Signin.this, ScrollingActivity.class);
+                        i.putExtra("NIS", nis);
+                        startActivity(i);
+
+                    }
+                });
+                alertDialog.show();
+            } else {
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
                 alertDialog.setTitle("Gagal");
                 alertDialog.setCancelable(false);
@@ -398,13 +415,18 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     }
 
     @Override
+    public void onBackPressed() {
+        System.exit(0);
+        // This above line close correctly
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
                                            int[] grantResults) {
 
         switch (requestCode) {
             case 1: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-
 
                 } else {
                     Toast.makeText(this, "Until you grant the permission, we cannot proceed further", Toast.LENGTH_SHORT).show();

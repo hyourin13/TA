@@ -70,6 +70,58 @@
 
             </FrameLayout>
 
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8">
+
+                <ImageView
+                    android:id="@+id/iimg7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/gmbr3" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iimg6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/gmbr4" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/iimg8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/app_name"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/gmbr5" />
+
+
+            </FrameLayout>
+
         </ViewFlipper>
     </LinearLayout>
 
@@ -88,50 +140,27 @@
             android:layout_marginRight="2.5dp"
             android:layout_weight="1"
             android:background="#3eb4c8"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <ViewFlipper
-                android:id="@+id/image_view_flipper2"
+            <ImageView
+                android:id="@+id/imageView4"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:src="@drawable/person" />
 
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ika1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/person2"
-                        />
-
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ika2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/person" />
-
-                </FrameLayout>
-
-
-            </ViewFlipper>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="INFORMASI AKUN"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
@@ -141,50 +170,28 @@
             android:layout_marginRight="2.5dp"
             android:layout_weight="1"
             android:background="#ffd500"
+            android:gravity="center"
             android:orientation="vertical">
 
-            <ViewFlipper
-                android:id="@+id/image_view_flipper3"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:src="@drawable/maps" />
 
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/iki1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/maps2" />
-
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/iki2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/maps" />
-
-                </FrameLayout>
-
-
-            </ViewFlipper>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="LOKASI"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -207,101 +214,54 @@
             android:gravity="center"
             android:orientation="vertical">
 
-            <ViewFlipper
-                android:id="@+id/image_view_flipper4"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:src="@drawable/people" />
 
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ikt1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/people2" />
-
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ikt2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/people" />
-
-                </FrameLayout>
-
-
-            </ViewFlipper>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="DATA ALUMNI"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btn_dunia"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="2.5dp"
+            android:layout_marginRight="2.5dp"
             android:layout_weight="1"
             android:background="#00ff80"
             android:gravity="center"
             android:orientation="vertical">
 
-            <ViewFlipper
-                android:id="@+id/image_view_flipper5"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:src="@drawable/mpuss" />
 
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ikti1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mpuss2" />
-
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ikti2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/mpuss" />
-
-                </FrameLayout>
-
-
-            </ViewFlipper>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="PETA"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -315,110 +275,32 @@
         android:paddingTop="05dp">
 
         <LinearLayout
-            android:id="@+id/btn_radio"
+            android:id="@+id/btn_nj"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="2.5dp"
             android:layout_weight="1"
-            android:background="#8989ff"
+            android:background="#00bbff"
             android:gravity="center"
             android:orientation="vertical">
 
-            <ViewFlipper
-                android:id="@+id/image_view_flipper6"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:paddingTop="5dp"
+                android:src="@drawable/logonj" />
 
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ita1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/radio2" />
-
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/ita2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/radio" />
-
-                </FrameLayout>
-
-
-            </ViewFlipper>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btn_website"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginRight="2.5dp"
-            android:layout_weight="1"
-            android:background="#3b3bff"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ViewFlipper
-                android:id="@+id/image_view_flipper7"
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/iti1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/web2" />
-
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/iti2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:contentDescription="@string/app_name"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/web" />
-
-                </FrameLayout>
-
-
-            </ViewFlipper>
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:gravity="center"
+                android:text="INFORMASI NURUL JADID"
+                android:textColor="#fff"
+                android:textSize="20sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
     </LinearLayout>
 </LinearLayout>

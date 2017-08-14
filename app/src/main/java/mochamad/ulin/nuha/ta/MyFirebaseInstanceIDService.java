@@ -1,5 +1,8 @@
 package mochamad.ulin.nuha.ta;
 
+import android.app.ProgressDialog;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,8 +15,18 @@ import com.android.volley.toolbox.Volley;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import mochamad.ulin.nuha.ta.Server;
 
 /**
  * Created by Snow on 5/31/2016.
@@ -55,14 +68,14 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         StringRequest stringPostRequest = new StringRequest(Request.Method.POST,"http://commit.paiton.biz/perpusda/token.php", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-              //  Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_LONG).show();
 
 
                 if (null == token) {
-                  //  Toast.makeText(getApplicationContext(), "Can't send a token to the server", Toast.LENGTH_LONG).show();
+                    //  Toast.makeText(getApplicationContext(), "Can't send a token to the server", Toast.LENGTH_LONG).show();
 
                 } else {
-                   // Toast.makeText(getApplicationContext(), "Token successfully send to server", Toast.LENGTH_LONG).show();
+                    // Toast.makeText(getApplicationContext(), "Token successfully send to server", Toast.LENGTH_LONG).show();
 
                 }
             }

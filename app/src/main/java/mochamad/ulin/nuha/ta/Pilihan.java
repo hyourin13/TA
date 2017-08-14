@@ -1,5 +1,6 @@
 package mochamad.ulin.nuha.ta;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import com.liuguangqiang.swipeback.SwipeBackActivity;
 import com.liuguangqiang.swipeback.SwipeBackLayout;
 
 public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
-    LinearLayout btn_profil,btn_foto,btn_lokasi,btn_data;
+    LinearLayout btn_profil,btn_foto,btn_lokasi,btn_data,btn_logout1;
     String no_hp,nis_pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,11 @@ public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
         btn_data = (LinearLayout) findViewById(R.id.btn_ubah_data);
         btn_data.setOnClickListener(this);
 
+        btn_logout1 = (LinearLayout) findViewById(R.id.btn_logout);
+        btn_logout1.setOnClickListener(this);
+
+
+
     }
 
     @Override
@@ -55,6 +61,16 @@ public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
                 break;
             case R.id.btn_ubah_data:
                 skipActivity(ScrollingActivity.class);
+                break;
+            case R.id.btn_logout:
+                SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
+                SharedPreferences.Editor edit = sharedPreferences.edit();
+                edit.clear().commit();
+                Intent ii = new Intent(Pilihan.this, Signin.class);
+                startActivity(ii);
+                finish();
+                break;
+
 
         }
     }
