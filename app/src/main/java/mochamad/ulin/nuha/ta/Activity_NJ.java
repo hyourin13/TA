@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 public class Activity_NJ extends AppCompatActivity implements View.OnClickListener {
-    LinearLayout btn_radio,btn_website;
+    LinearLayout btn_radio,btn_website,btn_pesan1,btn_masukan1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,14 @@ public class Activity_NJ extends AppCompatActivity implements View.OnClickListen
         btn_website = (LinearLayout) findViewById(R.id.btn_website);
         btn_website.setOnClickListener(this);
 
+        btn_pesan1 = (LinearLayout) findViewById(R.id.btn_pesan);
+        btn_pesan1.setOnClickListener(this);
+
+        btn_masukan1 = (LinearLayout) findViewById(R.id.btn_masukan);
+        btn_masukan1.setOnClickListener(this);
+
+
+
 
     }
 
@@ -35,6 +43,12 @@ public class Activity_NJ extends AppCompatActivity implements View.OnClickListen
                 break;
             case R.id.btn_radio:
                 skipActivity(Activity_Radio.class);
+                break;
+            case R.id.btn_pesan:
+                skipActivity(tampilnotif.class);
+                break;
+            case R.id.btn_masukan:
+                skipActivity(Activity_Masukan.class);
                 break;
 
         }

@@ -169,7 +169,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="2.5dp"
             android:layout_weight="1"
-            android:background="#ffd500"
+            android:background="#ffe041"
             android:gravity="center"
             android:orientation="vertical">
 

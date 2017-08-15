@@ -35,13 +35,13 @@ dependencies {
     //swipe back
     compile project(':library')
     compile 'com.google.firebase:firebase-messaging:11.0.2'
+    compile 'com.google.firebase:firebase-messaging:11.0.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.github.d-max:spots-dialog:0.6'
     compile 'com.github.liuguangqiang.prettyprogressbar:library:+'
     compile 'com.facebook.android:account-kit-sdk:4.+'
     compile 'com.facebook.android:audience-network-sdk:4.+'
-    compile 'com.google.firebase:firebase-messaging:11.0.2'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.google.firebase:firebase-core:11.0.2'
     compile 'com.google.android.gms:play-services-maps:11.0.2'

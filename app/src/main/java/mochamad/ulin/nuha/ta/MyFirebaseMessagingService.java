@@ -22,10 +22,14 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    String massage,title;
+    String title,no_hp;
+    String massage,status,id,name;
     Intent intent;
+    private static final String TAG = "MyFirebaseMsgService";
+
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        bacaPreferensi();
         massage = remoteMessage.getNotification().getBody();
         title = remoteMessage.getNotification().getTitle();
 
@@ -36,8 +40,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendNotification(String message) {
-
-        intent = new Intent(this, Menu_utama.class);
+        if (no_hp.toString().equals("0")) {
+            intent = new Intent(this, Signin.class);
+        }else{
+            intent = new Intent(this, tampilnotif.class);
+        }
 
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -52,5 +59,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(message));
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationBuilder.build());
+    }
+
+    private void bacaPreferensi() {
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        no_hp = pref.getString("no_hp", "0");
     }
 }

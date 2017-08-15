@@ -167,7 +167,16 @@
             android:name=".Scrolll"
             android:label="@string/title_activity_scrolll"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity android:name=".Activity_NJ"></activity>
+        <activity android:name=".Activity_NJ" />
+        <activity
+            android:name=".tampilnotif"
+            android:label="@string/title_activity_pesan"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity_Masukan"
+            android:label="@string/title_activity_Masukan"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Pilihan_Alumni"></activity>
     </application>
 
 </manifest>
