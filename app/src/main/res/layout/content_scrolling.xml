@@ -44,7 +44,7 @@
 
                                       <android.support.design.widget.TextInputLayout
                                           android:layout_width="match_parent"
-                                          android:layout_height="wrap_content"
+                                          android:layout_height="match_parent"
                                           android:textColorHint="@color/colorAccent">
 
                                              <EditText
@@ -58,6 +58,78 @@
                                                  android:inputType="text"
                                                  android:textSize="12dp" />
 
+                                             <android.support.design.widget.TextInputLayout
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:textColorHint="@color/colorAccent">
+
+                                                    <EditText
+                                                        android:id="@+id/input_nama"
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="wrap_content"
+                                                        android:drawableLeft="@drawable/ic_nama"
+                                                        android:drawablePadding="10dp"
+                                                        android:focusable="false"
+                                                        android:hint="Nama"
+                                                        android:inputType="text"
+                                                        android:textSize="12dp" />
+
+                                             </android.support.design.widget.TextInputLayout>
+
+                                      </android.support.design.widget.TextInputLayout>
+
+                                      <android.support.design.widget.TextInputLayout
+                                          android:layout_width="match_parent"
+                                          android:layout_height="match_parent"
+                                          android:textColorHint="@color/colorAccent">
+
+                                             <TextView
+                                                 android:id="@+id/textView5"
+                                                 android:layout_width="wrap_content"
+                                                 android:layout_height="wrap_content"
+                                                 android:layout_weight="1"
+                                                 android:text="Jenis Kelamin"
+                                                 android:textStyle="bold"/>
+
+                                             <RadioGroup
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:layout_weight="1" >
+
+                                                    <RadioButton
+                                                        android:id="@+id/rb_laki"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:text="Laki-Laki" />
+
+                                                    <RadioButton
+                                                        android:id="@+id/rb_perempuan"
+                                                        android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        android:layout_weight="1"
+                                                        android:text="Perempuan" />
+
+                                             </RadioGroup>
+
+                                      </android.support.design.widget.TextInputLayout>
+
+                                      <android.support.design.widget.TextInputLayout
+                                          android:layout_width="match_parent"
+                                          android:layout_height="match_parent"
+                                          android:textColorHint="@color/colorAccent">
+
+                                             <EditText
+                                                 android:id="@+id/input_masukz"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="wrap_content"
+                                                 android:drawableLeft="@drawable/ic_nik"
+                                                 android:drawablePadding="10dp"
+                                                 android:focusable="false"
+                                                 android:hint="Tanggal Masuk"
+                                                 android:inputType="text"
+                                                 android:textSize="12dp" />
+
                                       </android.support.design.widget.TextInputLayout>
 
                                       <android.support.design.widget.TextInputLayout
@@ -66,12 +138,13 @@
                                           android:textColorHint="@color/colorAccent">
 
                                              <EditText
-                                                 android:id="@+id/input_nama"
+                                                 android:id="@+id/input_keluarz"
                                                  android:layout_width="match_parent"
                                                  android:layout_height="wrap_content"
-                                                 android:drawableLeft="@drawable/ic_nama"
+                                                 android:drawableLeft="@drawable/ic_nik"
                                                  android:drawablePadding="10dp"
-                                                 android:hint="Nama"
+                                                 android:focusable="false"
+                                                 android:hint="Tanggal Keluar"
                                                  android:inputType="text"
                                                  android:textSize="12dp" />
 

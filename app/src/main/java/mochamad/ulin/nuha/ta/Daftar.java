@@ -49,7 +49,7 @@ public class Daftar extends AppCompatActivity {
     String lat_jemput, long_jemput, alamat;
     EditText edlokasi;
     String lat,loog,nisss;
-    String nis_pref,no_hp1,status_kirim;
+    String nis_pref,no_hp1,status_kirim,z_pref;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,10 +60,17 @@ public class Daftar extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         bacaPreferensi();
         if (no_hp1.toString().equals("0")){
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            nis2 = bundle.getString("NIS");
-            status_kirim = "masuk";
+            if (z_pref.toString().equals("0")){
+                Intent intent = getIntent();
+                Bundle bundle = intent.getExtras();
+                nis2 = bundle.getString("NIS");
+                Toast.makeText(this, nis2, Toast.LENGTH_SHORT).show();
+                status_kirim = "masuk";
+            }else{
+                Toast.makeText(this, z_pref, Toast.LENGTH_SHORT).show();
+                nis2 = z_pref;
+                status_kirim = "z";
+            }
         }else {
             Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
             nis2 = nis_pref;
@@ -188,6 +195,15 @@ public class Daftar extends AppCompatActivity {
                     editor.putString("lngg", loog);
                     editor.commit();
                     finish();
+                }else if (status_kirim.equalsIgnoreCase("z")){
+                    Intent i = new Intent(Daftar.this, Upload.class);
+                    startActivity(i);
+                    SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("lat", lat);
+                    editor.putString("lngg", loog);
+                    editor.commit();
+                    finish();
                 }else{
                     startActivity(new Intent(Daftar.this,Pilihan.class));
                     finish();
@@ -207,6 +223,8 @@ public class Daftar extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
         no_hp1 = pref.getString("no_hp", "0");
         nis_pref = pref.getString("nis", "0");
+        z_pref = pref.getString("statusZ", "0");
+
     }
 
 

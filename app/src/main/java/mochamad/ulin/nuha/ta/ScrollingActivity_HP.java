@@ -39,18 +39,17 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ScrollingActivity extends AppCompatActivity {
+public class ScrollingActivity_HP extends AppCompatActivity {
 
     private ProgressDialog pDialog;
     int success;
     private static final String TAG_SUCCESS = "success";
     JSONParser jsonParser = new JSONParser();
     String nis, nama, email, pendidikan, pekerjaan, wilayah, device, no_hp,phonee,fnltoken;
-    EditText ednis, ednama, edemail, eddidik, edkerja, edwilayah, edjns, edmasukz, edkeluarz;
+    EditText ednama, edemail, eddidik, edkerja, edwilayah, edmasukz, edkeluarz;
     String refreshedToken,device_id;
     Server con = new Server();
     Button btok;
-    String nis_pref,no_hp1,status_kirim,tggl_masuk_pref, jenis_kelamin_pref,tggl_keluar_pref,nama_pref;
     String terimanis, terimajns, terimanama, terimamsukz, terimakeluarz;
     RadioButton rdn_laki,rdn_perempuan;
     String jns_kelamin, tgl_keluar, tgl_masuk;
@@ -59,16 +58,14 @@ public class ScrollingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scrolling);
+        setContentView(R.layout.activity_scrolling__hp);
 
         refreshedToken = FirebaseInstanceId.getInstance().getToken();
-       // Toast.makeText(this, refreshedToken, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, refreshedToken, Toast.LENGTH_SHORT).show();
         TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
         device_id = tm.getDeviceId();
-       // Toast.makeText(this, device_id, Toast.LENGTH_SHORT).show();
-        ednis = (EditText) findViewById(R.id.input_nis);
+      //  Toast.makeText(this, device_id, Toast.LENGTH_SHORT).show();
         ednama = (EditText) findViewById(R.id.input_nama);
-       // edjns= (EditText) findViewById(R.id.input_jns);
         edmasukz = (EditText) findViewById(R.id.input_masukz);
         edkeluarz = (EditText) findViewById(R.id.input_keluarz);
         edemail = (EditText) findViewById(R.id.input_email);
@@ -78,52 +75,9 @@ public class ScrollingActivity extends AppCompatActivity {
         rdn_laki = (RadioButton) findViewById(R.id.rb_laki);
         rdn_perempuan = (RadioButton) findViewById(R.id.rb_perempuan);
         btok = (Button) findViewById(R.id.btn_simpan);
-        bacaPreferensi();
-        if (no_hp1.toString().equals("0")){
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            terimanis = bundle.getString("NIS");
-            terimanama = bundle.getString("Nama");
-            terimajns = bundle.getString("JNS");
-            terimamsukz = bundle.getString("MASUKZ");
-            terimakeluarz = bundle.getString("KELUARZ");
-            ednis.setText(terimanis);
-            ednama.setText(terimanama);
-            //edjns.setText(terimajns);
-            edmasukz.setText(terimamsukz);
-            edkeluarz.setText(terimakeluarz);
-            if (terimajns.equalsIgnoreCase("l")){
-                rdn_laki.setChecked(true);
-            }else if (terimajns.equalsIgnoreCase("p")) {
-                rdn_perempuan.setChecked(true);
-            }else{
-
-            }
-                status_kirim = "masuk";
-        }else {
-           /* Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, nama_pref, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, jenis_kelamin_pref, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, tggl_keluar_pref, Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, tggl_masuk_pref, Toast.LENGTH_SHORT).show();*/
-            ednis.setText(nis_pref);
-            ednama.setText(nama_pref);
-            if (jenis_kelamin_pref.equalsIgnoreCase("l")){
-                rdn_laki.setChecked(true);
-            }else if (jenis_kelamin_pref.equalsIgnoreCase("p")){
-                rdn_perempuan.setChecked(true);
-            }else{
-
-            }
-            edkeluarz.setText(tggl_keluar_pref);
-            edmasukz.setText(tggl_masuk_pref);
-            status_kirim = "ubah";
-        }
-        Toast.makeText(this, status_kirim, Toast.LENGTH_SHORT).show();
         btok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                nis = ednis.getText().toString();
                 nama = ednama.getText().toString();
                 email = edemail.getText().toString();
                 pendidikan = eddidik.getText().toString();
@@ -139,8 +93,8 @@ public class ScrollingActivity extends AppCompatActivity {
                 }else{
                     jns_kelamin = "z";
                 }
-                tgl_keluar= terimakeluarz;
-                tgl_masuk = terimamsukz;
+                tgl_keluar=  edmasukz.getText().toString();
+                tgl_masuk =  edkeluarz.getText().toString();
 
                 new  semu().execute();
             }
@@ -153,7 +107,7 @@ public class ScrollingActivity extends AppCompatActivity {
     class semu extends AsyncTask<String, String, String> {
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(ScrollingActivity.this);
+            pDialog = new ProgressDialog(ScrollingActivity_HP.this);
             pDialog.setMessage("Loading....");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -163,7 +117,6 @@ public class ScrollingActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(String... arg0) {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("nis", nis));
             params.add(new BasicNameValuePair("nama", nama));
             params.add(new BasicNameValuePair("email", email));
             params.add(new BasicNameValuePair("pendidikan", pendidikan));
@@ -174,11 +127,10 @@ public class ScrollingActivity extends AppCompatActivity {
             params.add(new BasicNameValuePair("jns_kelamin", jns_kelamin));
             params.add(new BasicNameValuePair("tgl_keluar", tgl_keluar));
             params.add(new BasicNameValuePair("tgl_masuk", tgl_masuk));
-            params.add(new BasicNameValuePair("status_kirim", status_kirim));
             System.out.println(params);
 
             // Melakukan Proses Request HTTP Post dengan Parameter yang ada
-            JSONObject json = jsonParser.makeHttpRequest(con.URL + "input_alumni.php", "POST",
+            JSONObject json = jsonParser.makeHttpRequest(con.URL + "input_alumni_hp.php", "POST",
                     params);
 
             // menampilkan log JSON pada logcat
@@ -201,27 +153,15 @@ public class ScrollingActivity extends AppCompatActivity {
          **/
         protected void onPostExecute(String file_url) {
             if (success == 1) {
-                if (status_kirim.equalsIgnoreCase("masuk")){
-                    Intent i = new Intent(ScrollingActivity.this, Daftar.class);
-                    i.putExtra("NIS", nis);
-                    startActivity(i);
-                    Toast.makeText(ScrollingActivity.this, nis, Toast.LENGTH_SHORT).show();
-                    SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("nama", nama);
-                    editor.putString("jenis_kelamin", jns_kelamin);
-                    editor.putString("tggl_keluar", tgl_keluar);
-                    editor.putString("tggl_masuk", tgl_masuk);
-                    editor.commit();
-                    finish();
-                }else  if (status_kirim.equalsIgnoreCase("ubah")){
-                    startActivity(new Intent(ScrollingActivity.this,Pilihan.class));
-                    finish();
-                }
-
-
+                Intent i = new Intent(ScrollingActivity_HP.this, Daftar.class);
+                i.putExtra("NIS", nis);
+                startActivity(i);
+                SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+                editor.putString("statusZ", device);
+                editor.commit();
             }else {
-                Toast.makeText(ScrollingActivity.this, "Data Belum Lengkap", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ScrollingActivity_HP.this, "Data Belum Lengkap", Toast.LENGTH_SHORT).show();
             }
             pDialog.dismiss();
         }
@@ -259,7 +199,7 @@ public class ScrollingActivity extends AppCompatActivity {
             public void onSuccess(final Account account) {
                 final PhoneNumber number = account.getPhoneNumber();
                 phonee = number == null ? null : number.toString();
-              //  Toast.makeText(ScrollingActivity.this, phonee, Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(ScrollingActivity.this, phonee, Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -268,15 +208,5 @@ public class ScrollingActivity extends AppCompatActivity {
         });
     }
 
-    private void bacaPreferensi() {
-        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
-        no_hp1 = pref.getString("no_hp", "0");
-        nis_pref = pref.getString("nis", "0");
-        jenis_kelamin_pref = pref.getString("jenis_kelamin", "0");
-        tggl_keluar_pref = pref.getString("tggl_keluar", "0");
-        tggl_masuk_pref = pref.getString("tggl_masuk", "0");
-        nama_pref = pref.getString("nama", "0");
-
-    }
 
 }

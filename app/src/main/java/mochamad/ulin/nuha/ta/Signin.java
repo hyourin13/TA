@@ -67,12 +67,15 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     public static String TAGdevice = "device";
     public static String TAGtoken = "token";
     public static String TAGalamat = "alamat";
+    public static String TAGjns_klmn = "jns_klmn";
+    public static String TAGtgl_keluar = "tgl_keluar";
+    public static String TAGtgl_masuk = "tgl_masuk";
     int success;
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_hasil = "Hasil";
     JSONArray string_json = null;
 
-    String nis, nama, lat,lngg,email,didik,kerja, wilayah, hpp, foto,device, token,alamat;
+    String nis, nama, lat,lngg,email,didik,kerja, wilayah, hpp, foto,device, token,alamat,jenis_kelamin, tggl_keluar, tggl_masuk;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +110,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             alertDialog.show();
         }
         LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+         if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
         } else {
             showGPSDisabledAlertToUser();
@@ -303,7 +306,9 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                     device = hasil.getString(TAGdevice);
                     token = hasil.getString(TAGtoken);
                     alamat = hasil.getString(TAGalamat);
-
+                    jenis_kelamin = hasil.getString(TAGjns_klmn);
+                    tggl_keluar = hasil.getString(TAGtgl_keluar);
+                    tggl_masuk = hasil.getString(TAGtgl_masuk);
                 }else  if (success == 5){
                     JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
                     JSONObject hasil = Object_hasil.getJSONObject(0);
@@ -353,6 +358,9 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
                         editor.putString("device", device);
                         editor.putString("token", token);
                         editor.putString("alamat", alamat);
+                        editor.putString("jenis_kelamin", jenis_kelamin);
+                        editor.putString("tggl_keluar", tggl_keluar);
+                        editor.putString("tggl_masuk", tggl_masuk);
                         editor.commit();
                         finish();
 

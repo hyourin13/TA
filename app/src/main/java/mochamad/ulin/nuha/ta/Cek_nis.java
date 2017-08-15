@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,6 +34,15 @@ public class Cek_nis extends Activity {
     private static final String TAG_SUCCESS = "success";
     JSONParser jsonParser = new JSONParser();
     int success;
+    public static String TAGnis = "nis";
+    public static String TAGnm = "nm";
+    public static String TAGjns_klmn = "jns_klmn";
+    public static String TAGtgl_masuk = "tgl_masuk";
+    public static String TAGtgl_keluar = "tgl_keluar";
+
+    private static final String TAG_hasil = "Hasil";
+
+    String nama,jns,tglmasuk,tglkeluar,nis1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +97,19 @@ public class Cek_nis extends Activity {
             // check untuk proses penyimpanan
             try {
                 success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
+                    JSONObject hasil = Object_hasil.getJSONObject(0);
+                    nis1 = hasil.getString(TAGnis);
+                    nama = hasil.getString(TAGnm);
+                    jns = hasil.getString(TAGjns_klmn);
+                    tglmasuk = hasil.getString(TAGtgl_masuk);
+                    tglkeluar = hasil.getString(TAGtgl_keluar);
 
+                } else {
+                    // hasil Tidak ditemukan
+                    System.out.println("Data Tidak Ditemukan");
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -113,6 +135,10 @@ public class Cek_nis extends Activity {
                         // TODO Auto-generated method stub
                         Intent i = new Intent(Cek_nis.this, ScrollingActivity.class);
                         i.putExtra("NIS", niss);
+                        i.putExtra("Nama", nama);
+                        i.putExtra("JNS", jns);
+                        i.putExtra("MASUKZ", tglmasuk);
+                        i.putExtra("KELUARZ", tglkeluar);
                         startActivity(i);
                         finish();
 

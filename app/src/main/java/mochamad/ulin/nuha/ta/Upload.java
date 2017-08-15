@@ -46,7 +46,7 @@ public class Upload extends AppCompatActivity {
     String url_upload = kon.URL + "upload.php";
     private Bitmap bitmap;
     private ImageView imageView;
-    String nis2,nis_pref,status_kirim;
+    String nis2,nis_pref,status_kirim,z_pref;
     Integer nis;
     Button btsend;
     private Uri filePath;
@@ -78,10 +78,16 @@ public class Upload extends AppCompatActivity {
 
         bacaPreferensi();
         if (no_hp.toString().equals("0")){
-            Intent intent = getIntent();
-            Bundle bundle = intent.getExtras();
-            nis2 = bundle.getString("NIS");
-            status_kirim = "masuk";
+            if (z_pref.toString().equals("0")){
+                Intent intent = getIntent();
+                Bundle bundle = intent.getExtras();
+                nis2 = bundle.getString("NIS");
+                status_kirim = "masuk";
+            }else {
+                Toast.makeText(this, z_pref, Toast.LENGTH_SHORT).show();
+                nis2 = z_pref;
+                status_kirim = "z";
+            }
         }else {
             Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
             nis2 = nis_pref;
@@ -299,6 +305,7 @@ public class Upload extends AppCompatActivity {
         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
         no_hp = pref.getString("no_hp", "0");
         nis_pref = pref.getString("nis", "0");
+        z_pref = pref.getString("statusZ", "0");
     }
 
 
