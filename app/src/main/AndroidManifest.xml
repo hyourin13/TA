@@ -163,10 +163,6 @@
         <activity
             android:name=".Z"
             android:label="@string/title_activity_z" />
-        <activity
-            android:name=".Scrolll"
-            android:label="@string/title_activity_scrolll"
-            android:theme="@style/AppThemeNoActionBar" />
         <activity android:name=".Activity_NJ" />
         <activity
             android:name=".tampilnotif"
@@ -176,7 +172,15 @@
             android:name=".Activity_Masukan"
             android:label="@string/title_activity_Masukan"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Pilihan_Alumni"></activity>
+        <activity
+            android:name=".Pilihan_Alumni"></activity>
+        <activity
+            android:name=".Menu_Alumni_Lokasi"
+            android:label="@string/title_activity_Cari_Lokasi"
+            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Menu_Alumni_Nama"
+            android:label="@string/title_activity_Cari_nama"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

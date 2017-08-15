@@ -8,6 +8,8 @@
     <string name="title_activity_akun">Menu Akun</string>
     <string name="title_activity_pesan">Informasi Nurul Jadid</string>
     <string name="title_activity_Masukan">Masukan</string>
+    <string name="title_activity_Cari_nama">Cari Nama Alumni</string>
+    <string name="title_activity_Cari_Lokasi">Cari Lokasi Alumni</string>
     <string name="facebook_app_id">508377842833493</string>
     <string name="account_kit_client_token">e9c4b09dca897a6e888496f5574b169b</string>
 

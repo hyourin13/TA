@@ -88,7 +88,7 @@
                     android:drawableLeft="@drawable/ic_nik"
                     android:drawablePadding="10dp"
                     android:hint="Nama"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:textSize="12dp" />
 
                 <Button
@@ -134,13 +134,13 @@
                 android:textColorHint="@color/colorAccent">
 
                 <EditText
-                    android:id="@+id/cari_A_nama"
+                    android:id="@+id/cari_A_wilayah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/ic_nik"
                     android:drawablePadding="10dp"
                     android:hint="Wilayah"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:textSize="12dp" />
 
                 <Button
@@ -152,7 +152,7 @@
                     android:layout_margin="8dp"
                     android:layout_weight="1"
                     android:background="@color/colorPrimary"
-                    android:text="Cari Wilyah"
+                    android:text="Cari Wilayah"
                     android:textColor="#fff" />
 
             </android.support.design.widget.TextInputLayout>

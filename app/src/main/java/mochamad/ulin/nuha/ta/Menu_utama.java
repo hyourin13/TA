@@ -94,7 +94,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                  skipActivity(Menu_Lokasi_All.class);
                 break;
             case R.id.btn_alumni:
-                skipActivity(Menu_Alumni.class);
+                skipActivity(Pilihan_Alumni.class);
                 break;
             case R.id.btn_nj:
                 skipActivity(Activity_NJ.class);
