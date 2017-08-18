@@ -87,7 +87,7 @@ public class ScrollingActivity_HP extends AppCompatActivity {
                 no_hp = phonee;
                 fnltoken = refreshedToken;
                 if (rdn_laki.isChecked()){
-                    jns_kelamin = "1";
+                    jns_kelamin = "l";
                 }else if (rdn_perempuan.isChecked()){
                     jns_kelamin = "p";
                 }else{
@@ -153,12 +153,15 @@ public class ScrollingActivity_HP extends AppCompatActivity {
          **/
         protected void onPostExecute(String file_url) {
             if (success == 1) {
-                Intent i = new Intent(ScrollingActivity_HP.this, Daftar.class);
-                i.putExtra("NIS", nis);
+                Intent i = new Intent(ScrollingActivity_HP.this, Password.class);
                 startActivity(i);
                 SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putString("statusZ", device);
+                editor.putString("nama", nama);
+                editor.putString("jenis_kelamin", jns_kelamin);
+                editor.putString("tggl_keluar", tgl_keluar);
+                editor.putString("tggl_masuk", tgl_masuk);
                 editor.commit();
             }else {
                 Toast.makeText(ScrollingActivity_HP.this, "Data Belum Lengkap", Toast.LENGTH_SHORT).show();
@@ -174,6 +177,23 @@ public class ScrollingActivity_HP extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(ScrollingActivity_HP.this);
+        alertDialog.setTitle("Informasi");
+        alertDialog.setCancelable(false);
+        alertDialog.setMessage("Harap Menyelesaikan Proses Registrasi");
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 
     @Override

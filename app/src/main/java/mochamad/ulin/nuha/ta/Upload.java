@@ -17,6 +17,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -46,12 +47,11 @@ public class Upload extends AppCompatActivity {
     String url_upload = kon.URL + "upload.php";
     private Bitmap bitmap;
     private ImageView imageView;
-    String nis2,nis_pref,status_kirim,z_pref;
+    String nis_pref,status_kirim,z_pref;
     Integer nis;
     Button btsend;
     private Uri filePath;
-    String phonee;
-    String no_hp;
+    String phonee,no_hp,device2;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,26 +79,21 @@ public class Upload extends AppCompatActivity {
         bacaPreferensi();
         if (no_hp.toString().equals("0")){
             if (z_pref.toString().equals("0")){
-                Intent intent = getIntent();
-                Bundle bundle = intent.getExtras();
-                nis2 = bundle.getString("NIS");
+                TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                device2 = tm.getDeviceId();
                 status_kirim = "masuk";
             }else {
-                Toast.makeText(this, z_pref, Toast.LENGTH_SHORT).show();
-                nis2 = z_pref;
+                TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                device2 = tm.getDeviceId();
                 status_kirim = "z";
             }
         }else {
-            Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
-            nis2 = nis_pref;
+            TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+            device2 = tm.getDeviceId();
             status_kirim = "ubah";
         }
 
         Toast.makeText(this, status_kirim, Toast.LENGTH_SHORT).show();
-
-
-        //nis2 = String.valueOf(nis);
-        //Toast.makeText(Uploadddd.this, nis2, Toast.LENGTH_LONG).show();
 
         AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
             @Override
@@ -116,6 +111,35 @@ public class Upload extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        if (status_kirim.equalsIgnoreCase("ubah")){
+            skipActivity(Pilihan.class);
+            finish();
+
+        }else {
+            final android.support.v7.app.AlertDialog.Builder alertDialog = new android.support.v7.app.AlertDialog.Builder(Upload.this);
+            alertDialog.setTitle("Informasi");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Harap Menyelesaikan Proses Registrasi");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
+    }
+
+    private void skipActivity(Class<?> classOf) {
+        Intent intent = new Intent(getApplicationContext(), classOf);
+        startActivity(intent);
+    }
+
     private void uploadImage() {
         class UploadImage extends AsyncTask<Bitmap, Void, String> {
 
@@ -139,7 +163,6 @@ public class Upload extends AppCompatActivity {
                     SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("no_hp", phonee);
-                    editor.putString("nis", nis2);
                     editor.commit();
                     finish();
                 }else {
@@ -159,7 +182,7 @@ public class Upload extends AppCompatActivity {
 
                 HashMap<String, String> data = new HashMap<String, String>();
                 data.put("image", uploadImage);
-                data.put("nis",nis2);
+                data.put("device",device2);
                 data.put("status_kirim",status_kirim);
                 String result = rh.sendPostRequest(url_upload, data);
 

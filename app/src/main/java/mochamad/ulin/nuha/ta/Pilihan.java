@@ -1,6 +1,7 @@
 package mochamad.ulin.nuha.ta;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.location.DetectedActivity;
 import com.liuguangqiang.swipeback.SwipeBackActivity;
@@ -23,6 +25,8 @@ public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
         initViews();
         setDragEdge(SwipeBackLayout.DragEdge.TOP);
         bacaPreferensi();
+      //  Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
     }
 
     private void initViews() {
@@ -43,6 +47,12 @@ public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
 
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        skipActivity(Menu_utama.class);
+        finish();
     }
 
     @Override

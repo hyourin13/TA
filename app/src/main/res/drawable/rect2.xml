@@ -6,8 +6,8 @@
             android:top="0dp"
             android:right="0dp"
             android:bottom="0dp" />
-        <corners android:radius="100dp" />
-        <solid android:color="#0073ff" />
+        <corners android:radius="4dp" />
+        <solid android:color="#a375cd" />
 
     </shape>
 

@@ -202,16 +202,22 @@ public class ScrollingActivity extends AppCompatActivity {
         protected void onPostExecute(String file_url) {
             if (success == 1) {
                 if (status_kirim.equalsIgnoreCase("masuk")){
-                    Intent i = new Intent(ScrollingActivity.this, Daftar.class);
-                    i.putExtra("NIS", nis);
+                    Intent i = new Intent(ScrollingActivity.this, Password.class);
                     startActivity(i);
                     Toast.makeText(ScrollingActivity.this, nis, Toast.LENGTH_SHORT).show();
                     SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
+                    editor.putString("nis", nis);
                     editor.putString("nama", nama);
-                    editor.putString("jenis_kelamin", jns_kelamin);
-                    editor.putString("tggl_keluar", tgl_keluar);
-                    editor.putString("tggl_masuk", tgl_masuk);
+                    editor.putString("email", email);
+                    editor.putString("pendidikan", pendidikan);
+                    editor.putString("pekerjaan", pekerjaan);
+                    editor.putString("wilayah", wilayah);
+                    editor.putString("device", device);
+                    editor.putString("no_hp", no_hp);
+                    editor.putString("jns_kelamin", jns_kelamin);
+                    editor.putString("tgl_keluar", tgl_keluar);
+                    editor.putString("tgl_masuk", tgl_masuk);
                     editor.commit();
                     finish();
                 }else  if (status_kirim.equalsIgnoreCase("ubah")){
@@ -234,6 +240,35 @@ public class ScrollingActivity extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_scrolling, menu);
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (status_kirim.equalsIgnoreCase("ubah")){
+            skipActivity(Pilihan.class);
+            finish();
+
+        }else {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(ScrollingActivity.this);
+            alertDialog.setTitle("Informasi");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Harap Menyelesaikan Proses Registrasi");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
+    }
+
+    private void skipActivity(Class<?> classOf) {
+        Intent intent = new Intent(getApplicationContext(), classOf);
+        startActivity(intent);
     }
 
     @Override

@@ -33,6 +33,7 @@ public class Cek_nis extends Activity {
     private ProgressDialog pDialog;
     private static final String TAG_SUCCESS = "success";
     JSONParser jsonParser = new JSONParser();
+    private static final String TAG_hasil = "Hasil";
     int success;
     public static String TAGnis = "nis";
     public static String TAGnm = "nm";
@@ -40,7 +41,7 @@ public class Cek_nis extends Activity {
     public static String TAGtgl_masuk = "tgl_masuk";
     public static String TAGtgl_keluar = "tgl_keluar";
 
-    private static final String TAG_hasil = "Hasil";
+
 
     String nama,jns,tglmasuk,tglkeluar,nis1;
 
@@ -50,6 +51,7 @@ public class Cek_nis extends Activity {
         setContentView(R.layout.activity_cek_nis);
         cek = (TextView) findViewById(R.id.cek_nis);
         nis = (Button) findViewById(R.id.btn_cek);
+
         nis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

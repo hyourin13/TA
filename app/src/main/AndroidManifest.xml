@@ -183,7 +183,12 @@
         <activity
             android:name=".ScrollingActivity_HP"
             android:label="@string/title_activity_scrolling__hp"
-            android:theme="@style/AppThemeNoActionBar"></activity>
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Verifikasi_satu"
+            android:label="@string/title_activity_ver_alumni"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Password"></activity>
     </application>
 
 </manifest>

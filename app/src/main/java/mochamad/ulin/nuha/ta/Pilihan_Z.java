@@ -25,7 +25,7 @@ public class Pilihan_Z extends AppCompatActivity {
         btnz2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent cobak = new Intent(Pilihan_Z.this, ScrollingActivity_HP.class);
+                Intent cobak = new Intent(Pilihan_Z.this, Verifikasi_satu.class);
                 startActivity(cobak);
             }
         });

@@ -37,7 +37,7 @@ import java.util.List;
 
 public class Daftar extends AppCompatActivity {
 
-    String  id,nis2;
+    String  id,nis2,device2;
     private ProgressDialog pDialog;
     int success;
     JSONArray _JSONarray = null;
@@ -47,8 +47,8 @@ public class Daftar extends AppCompatActivity {
     Button btlanjut;
     private static final int OJEK_JEMPUT = 0;
     String lat_jemput, long_jemput, alamat;
-    EditText edlokasi;
-    String lat,loog,nisss;
+    EditText edlokasi,lokas_ket;
+    String lat,loog,nisss,ket;
     String nis_pref,no_hp1,status_kirim,z_pref;
 
     @Override
@@ -61,25 +61,26 @@ public class Daftar extends AppCompatActivity {
         bacaPreferensi();
         if (no_hp1.toString().equals("0")){
             if (z_pref.toString().equals("0")){
-                Intent intent = getIntent();
-                Bundle bundle = intent.getExtras();
-                nis2 = bundle.getString("NIS");
-                Toast.makeText(this, nis2, Toast.LENGTH_SHORT).show();
+                TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                device2 = tm.getDeviceId();
                 status_kirim = "masuk";
             }else{
-                Toast.makeText(this, z_pref, Toast.LENGTH_SHORT).show();
-                nis2 = z_pref;
+               // Toast.makeText(this, z_pref, Toast.LENGTH_SHORT).show();
+                device2 = z_pref;
                 status_kirim = "z";
             }
         }else {
-            Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
-            nis2 = nis_pref;
+            TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+            device2 = tm.getDeviceId();
             status_kirim = "ubah";
         }
-        Toast.makeText(this, status_kirim, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, status_kirim, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, device2, Toast.LENGTH_LONG).show();
+
         setTitle("Pilih Lokasi Rumah Anda");
         edlokasi = (EditText) findViewById(R.id.ed_lokasi);
         btlanjut = (Button) findViewById(R.id.btlanjut);
+        lokas_ket = (EditText) findViewById(R.id.edt_lokkasi);
         btlanjut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,6 +91,7 @@ public class Daftar extends AppCompatActivity {
                     lat = lat_jemput;
                     loog = long_jemput;
                      nisss =nis2;
+                     ket = lokas_ket.getText().toString();
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Daftar.this);
                     alertDialog.setTitle("Info");
                     alertDialog.setCancelable(false);
@@ -121,6 +123,34 @@ public class Daftar extends AppCompatActivity {
                 startActivityForResult(intent, OJEK_JEMPUT);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (status_kirim.equalsIgnoreCase("ubah")){
+            skipActivity(Pilihan.class);
+            finish();
+
+        }else {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Daftar.this);
+            alertDialog.setTitle("Informasi");
+            alertDialog.setCancelable(false);
+            alertDialog.setMessage("Harap Menyelesaikan Proses Registrasi");
+            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // TODO Auto-generated method stub
+                    dialog.dismiss();
+                }
+            });
+            alertDialog.show();
+        }
+    }
+
+    private void skipActivity(Class<?> classOf) {
+        Intent intent = new Intent(getApplicationContext(), classOf);
+        startActivity(intent);
     }
 
     @Override
@@ -157,8 +187,9 @@ public class Daftar extends AppCompatActivity {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("alamat", alamat));
             params.add(new BasicNameValuePair("lat", lat));
-            params.add(new BasicNameValuePair("nisss", nisss));
+            params.add(new BasicNameValuePair("devicee", device2));
             params.add(new BasicNameValuePair("loog", loog));
+            params.add(new BasicNameValuePair("ket", ket));
             params.add(new BasicNameValuePair("status_kirim", status_kirim));
             System.out.println(params);
 
@@ -187,12 +218,12 @@ public class Daftar extends AppCompatActivity {
             if (success == 1) {
                 if (status_kirim.equalsIgnoreCase("masuk")){
                     Intent i = new Intent(Daftar.this, Upload.class);
-                    i.putExtra("NIS", nis2);
                     startActivity(i);
                     SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("lat", lat);
                     editor.putString("lngg", loog);
+                    editor.putString("alamat", alamat);
                     editor.commit();
                     finish();
                 }else if (status_kirim.equalsIgnoreCase("z")){
@@ -202,6 +233,7 @@ public class Daftar extends AppCompatActivity {
                     SharedPreferences.Editor editor = pref.edit();
                     editor.putString("lat", lat);
                     editor.putString("lngg", loog);
+                    editor.putString("alamat", alamat);
                     editor.commit();
                     finish();
                 }else{

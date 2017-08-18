@@ -26,6 +26,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.accountkit.Account;
+import com.facebook.accountkit.AccountKit;
+import com.facebook.accountkit.AccountKitCallback;
+import com.facebook.accountkit.AccountKitError;
+import com.facebook.accountkit.PhoneNumber;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -74,6 +80,7 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_hasil = "Hasil";
     JSONArray string_json = null;
+    String accountKitId,phoneNumberString;
 
     String nis, nama, lat,lngg,email,didik,kerja, wilayah, hpp, foto,device, token,alamat,jenis_kelamin, tggl_keluar, tggl_masuk;
 
@@ -125,6 +132,26 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             startActivity(i);
             finish();
         }
+
+        AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+            @Override
+            public void onSuccess(final Account account) {
+                // Get Account Kit ID
+                accountKitId = account.getId();
+
+                // Get phone number
+                PhoneNumber phoneNumber = account.getPhoneNumber();
+                phoneNumberString = phoneNumber.toString();
+
+                //Toast.makeText(Signin.this, phoneNumberString, Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onError(final AccountKitError error) {
+                // Handle Error
+            }
+        });
        // Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
     }
 
