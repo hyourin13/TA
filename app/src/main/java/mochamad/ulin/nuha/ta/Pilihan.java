@@ -76,7 +76,7 @@ public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
                 SharedPreferences sharedPreferences = getSharedPreferences("login", Context.MODE_PRIVATE);
                 SharedPreferences.Editor edit = sharedPreferences.edit();
                 edit.clear().commit();
-                Intent ii = new Intent(Pilihan.this, Signin.class);
+                Intent ii = new Intent(Pilihan.this, DrowRanger.class);
                 startActivity(ii);
                 finish();
                 break;
@@ -84,6 +84,10 @@ public class Pilihan extends SwipeBackActivity implements View.OnClickListener {
 
         }
     }
+
+
+
+
 
     private void skipActivity(Class<?> classOf) {
         Intent intent = new Intent(getApplicationContext(), classOf);

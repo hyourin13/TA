@@ -8,136 +8,168 @@
 
 
     <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="250dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:background="@drawable/logonj"
         android:scaleType="centerInside"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
 
-        ></FrameLayout>
+    </FrameLayout>
 
 
     <LinearLayout
-        android:layout_above="@+id/linear3"
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
-<customfonts.MyTextView
-    android:id="@+id/head"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="center"
-    android:text="Student Login"
-    android:textColor="#4c565f"
-    android:textSize="29dp"
-
-    />
+        android:layout_alignBottom="@+id/linear3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:paddingBottom="50dp">
 
 
-
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/email1"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/colorhint"
-            android:textColor="@color/colortext">
+            android:gravity="center"
+            android:text="NurJa Alumni"
+            android:textColor="#4c565f"
+            android:textSize="29dp"
 
-            <customfonts.MyEditText
-                android:textSize="16dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Email"
-                android:layout_marginLeft="46dp"
-                android:textColorHint="@color/colorhint"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:textColor="@color/colortext"
-                android:maxLength="12"
-                android:background="#0000"
-                android:padding="16dp"
-                android:gravity="left"
-                android:drawableLeft="@drawable/ic_phone"
-                android:drawablePadding="12dp"
-                />
+                android:textColorHint="@color/colorhint">
+
+                <EditText
+                    android:layout_width="83dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="46dp"
+                    android:background="#0000"
+                    android:drawableLeft="@drawable/ic_phone"
+                    android:focusable="false"
+                    android:gravity="left"
+                    android:hint="+62"
+                    android:maxLength="12"
+                    android:padding="16dp"
+                    android:textColor="@color/colortext"
+                    android:textColorHint="@color/colorhint"
+                    android:textSize="16dp" />
 
 
-        </android.support.design.widget.TextInputLayout>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/email1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/colortext"
+                android:textColorHint="@color/colorhint">
+
+                <EditText
+                    android:id="@+id/sing_hp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#0000"
+                    android:gravity="left"
+                    android:hint="No Handphone"
+                    android:inputType="number"
+                    android:maxLength="12"
+                    android:padding="16dp"
+                    android:textColor="@color/colortext"
+                    android:textColorHint="@color/colorhint"
+                    android:textSize="16dp" />
+
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
 
         <View
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_marginLeft="56dp"
             android:layout_marginRight="56dp"
-            android:layout_height="1dp"
-            android:background="#59d58d"/>
+            android:background="#59d58d" />
 
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColorHint="@color/colorhint"
-            android:textColor="@color/colortext">
+            android:textColor="@color/colortext"
+            android:textColorHint="@color/colorhint">
 
 
+            <EditText
 
-            <customfonts.MyEditText
-
-                android:textSize="16dp"
+                android:id="@+id/sing_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
                 android:layout_marginLeft="46dp"
                 android:layout_marginRight="46dp"
-                android:textColorHint="@color/colorhint"
-                android:textColor="@color/colortext"
                 android:background="#0000"
-                android:padding="16dp"
-                android:inputType="textPassword"
                 android:drawableLeft="@drawable/ic_password"
                 android:drawablePadding="12dp"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:padding="16dp"
+                android:textColor="@color/colortext"
+                android:textColorHint="@color/colorhint"
 
 
-                />
+                android:textSize="16dp" />
         </android.support.design.widget.TextInputLayout>
 
         <View
             android:layout_width="match_parent"
+            android:layout_height="1dp"
             android:layout_marginLeft="56dp"
             android:layout_marginRight="56dp"
-            android:layout_height="1dp"
-            android:background="#59d58d"/>
+            android:background="#59d58d" />
 
         <LinearLayout
-           android:layout_marginTop="12dp"
             android:id="@+id/linear4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:orientation="horizontal"
 
             >
 
-            <CheckBox
-                android:layout_weight="2"
-                android:id="@+id/remember"
+            <TextView
+                android:id="@+id/sing_daftar"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Remember me"
-                android:checked="false"
-                android:buttonTint="@color/colorhint"
-                android:textColor="@color/colorhint"
                 android:layout_marginLeft="60dp"
+                android:layout_weight="2"
+                android:buttonTint="@color/colorhint"
+                android:checked="false"
+                android:text="Daftar Aplikasi ?"
+                android:textColor="@color/colorhint"
                 android:textSize="11dp"
 
 
                 />
-            <customfonts.MyTextView
-                android:layout_weight="2.3"
+
+            <TextView
                 android:id="@+id/forgotpass"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Forgot password?"
-                android:textColor="@color/colorhint"
                 android:layout_gravity="center"
+                android:layout_weight="2.3"
+                android:text="Lupa Password ?"
+                android:textColor="@color/colorhint"
                 android:textSize="11dp"
 
                 />
@@ -146,27 +178,22 @@
         </LinearLayout>
 
 
+        <TextView
 
-
-
-        <customfonts.MyTextView
-
-            android:id="@+id/signin1"
+            android:id="@+id/sing_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/rect1"
-            android:text="Sign in"
-            android:textSize="16dp"
-            android:textColor="#fff"
-            android:gravity="center"
+            android:layout_marginBottom="11dp"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:padding="12dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="11dp"
+            android:background="@drawable/rect1"
             android:elevation="3dp"
-
-
+            android:gravity="center"
+            android:padding="12dp"
+            android:text="Login"
+            android:textColor="#fff"
+            android:textSize="16dp"
 
 
             />

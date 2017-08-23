@@ -99,7 +99,7 @@ public class ScrollingActivity extends AppCompatActivity {
             }else{
 
             }
-                status_kirim = "masuk";
+            status_kirim = "masuk";
         }else {
            /* Toast.makeText(this, nis_pref, Toast.LENGTH_SHORT).show();
             Toast.makeText(this, nama_pref, Toast.LENGTH_SHORT).show();
@@ -214,7 +214,6 @@ public class ScrollingActivity extends AppCompatActivity {
                     editor.putString("pekerjaan", pekerjaan);
                     editor.putString("wilayah", wilayah);
                     editor.putString("device", device);
-                    editor.putString("no_hp", no_hp);
                     editor.putString("jns_kelamin", jns_kelamin);
                     editor.putString("tgl_keluar", tgl_keluar);
                     editor.putString("tgl_masuk", tgl_masuk);

@@ -1,11 +1,13 @@
 package mochamad.ulin.nuha.ta;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
@@ -68,6 +70,63 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         new TestInternet().execute();
     }
 
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed()
+    {
+/*
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);*/
+
+
+        // code here to show dialog
+        //super.onBackPressed();  // optional depending on your needs
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Peringatan");
+        builder.setMessage("Apakah Anda Yakin akan Keluar");
+
+        builder.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                // Do nothing but close the dialog
+               /* dialog.dismiss();
+                finish();*/
+                Intent ii = new Intent(Menu_utama.this, DrowRanger.class);
+                startActivity(ii);
+                finish();
+            }
+        });
+
+        builder.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                // Do nothing
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+
+    }
+
     class TestInternet extends AsyncTask<Void, Void, Boolean> {
         @Override
         protected void onPreExecute() {
@@ -77,6 +136,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
+            pDialog.dismiss();
         }
 
         @Override
@@ -103,7 +163,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
 
         @Override
         protected void onPostExecute(Boolean result) {
-            pDialog.dismiss();
+           // pDialog.dismiss();
             if (!result) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Menu_utama.this);
                 builder.setMessage("Tidak dapat menyambung ke internet. Silahkan cek koneksi internet anda. !!!");
@@ -134,22 +194,24 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                         PhoneNumber phoneNumber = account.getPhoneNumber();
                         phoneNumberString = phoneNumber.toString();
                         HP = phoneNumberString;
-                        Toast.makeText(Menu_utama.this, HP, Toast.LENGTH_LONG).show();
+                        //Toast.makeText(Menu_utama.this, HP, Toast.LENGTH_LONG).show();
 
 
                         refreshedToken = FirebaseInstanceId.getInstance().getToken();
+                        //Toast.makeText(Menu_utama.this, refreshedToken, Toast.LENGTH_LONG).show();
                         TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
                         device_id = tm.getDeviceId();
                         futar();
                         if (no_hp.toString().equals("0")){
-                            Intent i = new Intent(Menu_utama.this, Signin.class);
+                            Intent i = new Intent(Menu_utama.this, DrowRanger.class);
                             startActivity(i);
                             finish();
                         }else {
                             Toast.makeText(Menu_utama.this, " Aktif", Toast.LENGTH_SHORT).show();
+                            new semu().execute();
                         }
 
-                        new semu().execute();
+
                     }
 
                     @Override
@@ -164,7 +226,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 // TODO Auto-generated method stub
-                                startActivity(new Intent(Menu_utama.this,Signin.class));
+                                startActivity(new Intent(Menu_utama.this,DrowRanger.class));
                                 finish();
 
                             }
@@ -184,6 +246,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
             pDialog.show();
+            pDialog.dismiss();
         }
 
         @Override
@@ -229,10 +292,15 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
             }else {
                 Toast.makeText(Menu_utama.this, "Gagal", Toast.LENGTH_SHORT).show();
             }
-            pDialog.dismiss();
+            //pDialog.dismiss();
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+    }
 
 
     public void futar(){

@@ -59,6 +59,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_gusdur" />
 
             <CheckBox
@@ -88,6 +91,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_hasan_genggong" />
 
             <CheckBox
@@ -118,6 +124,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_hasan_nawawi" />
 
             <CheckBox
@@ -156,6 +165,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_asad" />
 
             <CheckBox
@@ -185,6 +197,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_zaini" />
 
             <CheckBox
@@ -214,6 +229,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_sufyan" />
 
             <CheckBox
@@ -253,6 +271,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_fawaid" />
 
             <CheckBox
@@ -282,6 +303,9 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_abdul_haq" />
 
             <CheckBox
@@ -311,6 +335,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
+                android:maxWidth="42dp"
+                android:maxHeight="42dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/kyai_zuhri" />
 
             <CheckBox

@@ -88,6 +88,11 @@ public class Password extends AppCompatActivity {
         }
 
         @Override
+        protected void onProgressUpdate(String... values) {
+            Toast.makeText(getApplicationContext(), values[0], Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
         protected String doInBackground(String... arg0) {
             // Berhubung Tidak ada proses Where dalam Query maka Parameternya
             // Kosong

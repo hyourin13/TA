@@ -41,7 +41,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private void sendNotification(String message) {
         if (no_hp.toString().equals("0")) {
-            intent = new Intent(this, Signin.class);
+            intent = new Intent(this, DrowRanger.class);
         }else{
             intent = new Intent(this, tampilnotif.class);
         }

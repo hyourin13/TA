@@ -41,18 +41,18 @@
 
 
 
-    <TextView
-        android:id="@+id/signin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Masuk Aplikasi"
-        android:textColor="#ffffff"
-        android:textSize="19dp"
-        android:padding="16dp"
-        android:gravity="center"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/rect"
-        android:layout_marginBottom="35dp"/>
+        <TextView
+            android:id="@+id/signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Masuk Aplikasi"
+            android:textColor="#ffffff"
+            android:textSize="19dp"
+            android:padding="16dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/rect"
+            android:layout_marginBottom="35dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

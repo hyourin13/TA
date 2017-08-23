@@ -44,6 +44,7 @@ import java.util.TimerTask;
 
 import dmax.dialog.SpotsDialog;
 
+
 /**
  * Created by madchen on 14/07/2017.
  */
@@ -149,6 +150,7 @@ public class Detail extends AppCompatActivity implements View.OnClickListener {
             progressDialog.setIndeterminate(false);
             progressDialog.setCancelable(false);
             progressDialog.show();
+           // progressDialog.dismiss();
         }
 
         @Override

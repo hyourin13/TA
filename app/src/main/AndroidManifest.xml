@@ -39,7 +39,7 @@
         android:roundIcon="@mipmap/ic_loogo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".Signin">
+        <activity android:name=".DrowRanger">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -91,9 +91,7 @@
         <activity
             android:name=".ErrorDaftar"
             android:theme="@style/AppThemeNoActionBar" />
-        <activity
-            android:name=".Cek_nis"
-            android:theme="@style/AppThemeNoActionBar" />
+
         <activity
             android:name=".ErrorActivity"
             android:configChanges="keyboardHidden|orientation"
@@ -162,6 +160,7 @@
             android:name=".Z"
             android:label="@string/title_activity_z" />
         <activity android:name=".Activity_NJ" />
+
         <activity
             android:name=".tampilnotif"
             android:label="@string/title_activity_pesan"
@@ -188,6 +187,7 @@
             android:name=".Verifikasi_satu"
             android:label="@string/title_activity_ver_alumni"
             android:theme="@style/AppTheme" />
+        <activity android:name=".Cek_nis"></activity>
         <activity android:name=".Password"></activity>
     </application>
 

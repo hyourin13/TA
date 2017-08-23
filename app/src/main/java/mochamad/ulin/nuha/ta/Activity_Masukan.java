@@ -3,6 +3,7 @@ package mochamad.ulin.nuha.ta;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Activity_Masukan extends SwipeBackActivity {
-    String nis, masukan;
+    String nis, masukan,nis2;
     EditText ednis,ednama;
     ProgressDialog pDialog;
     int success;
@@ -40,6 +41,8 @@ public class Activity_Masukan extends SwipeBackActivity {
         setDragEdge(SwipeBackLayout.DragEdge.LEFT);
          ednis = (EditText) findViewById(R.id.massukan_nis);
          ednama = (EditText) findViewById(R.id.masukan_masuk);
+        bacaPreferensi();
+        ednis.setText(nis2);
         Button btn_kirimm = (Button) findViewById(R.id.btn_masuk);
         btn_kirimm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +116,13 @@ public class Activity_Masukan extends SwipeBackActivity {
             }
             pDialog.dismiss();
         }
+    }
+
+    private void bacaPreferensi() {
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+
+        nis2 = pref.getString("nis", "0");
+
     }
 
 
