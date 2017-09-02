@@ -10,6 +10,6 @@
     <color name="white_trans">#99FFFFFF</color>
     <color name="grey_100">#0040ff</color>
     <color name="grey_300">#E0E0E0</color>
-    <color name="colortext">#100b20</color>
-    <color name="colorhint">#a9aaac</color>
+    <color name="colortext">#000000</color>
+    <color name="colorhint">#ffffff</color>
 </resources>

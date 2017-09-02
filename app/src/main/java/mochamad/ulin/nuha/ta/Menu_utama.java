@@ -41,7 +41,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 
-
 /**
  * Created by king on 27/04/2017.
  */
@@ -49,8 +48,8 @@ import java.net.URL;
 public class Menu_utama extends AppCompatActivity implements View.OnClickListener {
     private ViewFlipper mViewFlipper;
 
-    LinearLayout btn_akun, btn_maps,btn_nj1,btn_alumni,btn_dunia;
-    String no_hp,lat,lngg,accountKitId,phoneNumberString;
+    LinearLayout btn_akun, btn_maps, btn_nj1, btn_alumni, btn_dunia;
+    String no_hp, lat, lngg, accountKitId, phoneNumberString;
 
     private ProgressDialog pDialog;
     private static final String TAG_SUCCESS = "success";
@@ -59,42 +58,85 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
     Server con = new Server();
 
     private static final String TAG_hasil = "Hasil";
-    String refreshedToken,device_id,HP;
+    String refreshedToken, device_id, HP;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_utama);
         initViews();
         bacaPreferensi();
         new TestInternet().execute();
-    }
+
+        AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+            @Override
+            public void onSuccess(final Account account) {
+
+                // Get Account Kit ID
+                accountKitId = account.getId();
+
+                // Get phone number
+                PhoneNumber phoneNumber = account.getPhoneNumber();
+                phoneNumberString = phoneNumber.toString();
+                HP = phoneNumberString;
+                //Toast.makeText(Menu_utama.this, HP, Toast.LENGTH_LONG).show();
 
 
-    boolean doubleBackToExitPressedOnce = false;
+                refreshedToken = FirebaseInstanceId.getInstance().getToken();
+                TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                device_id = tm.getDeviceId();
+                futar();
+                if (no_hp.toString().equals("0")) {
+                    Intent i = new Intent(Menu_utama.this, DrowRanger.class);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Toast.makeText(Menu_utama.this, " Aktif", Toast.LENGTH_SHORT).show();
+                    new semu().execute();
+                }
 
-    @Override
-    public void onBackPressed()
-    {
-/*
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed();
-            return;
-        }
 
-        this.doubleBackToExitPressedOnce = true;
-        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-        new Handler().postDelayed(new Runnable() {
+            }
 
             @Override
-            public void run() {
-                doubleBackToExitPressedOnce=false;
+            public void onError(final AccountKitError error) {
+                // Handle Error
+                       /* final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Menu_utama.this);
+                        alertDialog.setTitle("Gagal Login");
+                        alertDialog.setCancelable(false);
+                        alertDialog.setMessage("Sesi Anda Telah Habis");
+                        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+                                startActivity(new Intent(Menu_utama.this,DrowRanger.class));
+                                finish();
+
+                            }
+                        });
+                        alertDialog.show();*/
             }
-        }, 2000);*/
+        });
 
+        refreshedToken = FirebaseInstanceId.getInstance().getToken();
+        //Toast.makeText(Menu_utama.this, refreshedToken, Toast.LENGTH_LONG).show();
+        //Toast.makeText(Menu_utama.this, HP, Toast.LENGTH_LONG).show();
+        TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        device_id = tm.getDeviceId();
+        futar();
+        if (no_hp.toString().equals("0")) {
+            Intent i = new Intent(Menu_utama.this, DrowRanger.class);
+            startActivity(i);
+            finish();
+        } else {
+            //Toast.makeText(Menu_utama.this, " Aktif", Toast.LENGTH_SHORT).show();
+            new semu().execute();
+        }
+    }
 
-        // code here to show dialog
-        //super.onBackPressed();  // optional depending on your needs
+    @Override
+    public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Peringatan");
@@ -163,7 +205,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
 
         @Override
         protected void onPostExecute(Boolean result) {
-           // pDialog.dismiss();
+            // pDialog.dismiss();
             if (!result) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Menu_utama.this);
                 builder.setMessage("Tidak dapat menyambung ke internet. Silahkan cek koneksi internet anda. !!!");
@@ -183,57 +225,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                 alert11.show();
             } else {
                 pDialog.dismiss();
-                AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
-                    @Override
-                    public void onSuccess(final Account account) {
 
-                        // Get Account Kit ID
-                        accountKitId = account.getId();
-
-                        // Get phone number
-                        PhoneNumber phoneNumber = account.getPhoneNumber();
-                        phoneNumberString = phoneNumber.toString();
-                        HP = phoneNumberString;
-                        //Toast.makeText(Menu_utama.this, HP, Toast.LENGTH_LONG).show();
-
-
-                        refreshedToken = FirebaseInstanceId.getInstance().getToken();
-                        //Toast.makeText(Menu_utama.this, refreshedToken, Toast.LENGTH_LONG).show();
-                        TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-                        device_id = tm.getDeviceId();
-                        futar();
-                        if (no_hp.toString().equals("0")){
-                            Intent i = new Intent(Menu_utama.this, DrowRanger.class);
-                            startActivity(i);
-                            finish();
-                        }else {
-                            Toast.makeText(Menu_utama.this, " Aktif", Toast.LENGTH_SHORT).show();
-                            new semu().execute();
-                        }
-
-
-                    }
-
-                    @Override
-                    public void onError(final AccountKitError error) {
-                        // Handle Error
-                        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Menu_utama.this);
-                        alertDialog.setTitle("Gagal Login");
-                        alertDialog.setCancelable(false);
-                        alertDialog.setMessage("Sesi Anda Telah Habis");
-                        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                // TODO Auto-generated method stub
-                                startActivity(new Intent(Menu_utama.this,DrowRanger.class));
-                                finish();
-
-                            }
-                        });
-                        alertDialog.show();
-                    }
-                });
             }
         }
     }
@@ -256,7 +248,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("token", refreshedToken));
             params.add(new BasicNameValuePair("device", device_id));
-            params.add(new BasicNameValuePair("phone", HP));
+           // params.add(new BasicNameValuePair("phone", HP));
             System.out.println(params);
 
             // Melakukan Proses Request HTTP Post dengan Parameter yang ada
@@ -288,9 +280,9 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
          **/
         protected void onPostExecute(String file_url) {
             if (success == 1) {
-                Toast.makeText(Menu_utama.this, "Sukses", Toast.LENGTH_SHORT).show();
-            }else {
-                Toast.makeText(Menu_utama.this, "Gagal", Toast.LENGTH_SHORT).show();
+               // Toast.makeText(Menu_utama.this, "Sukses", Toast.LENGTH_SHORT).show();
+            } else {
+              //  Toast.makeText(Menu_utama.this, "Gagal", Toast.LENGTH_SHORT).show();
             }
             //pDialog.dismiss();
         }
@@ -299,11 +291,11 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onResume() {
         super.onResume();  // Always call the superclass method first
-
+        new TestInternet().execute();
     }
 
 
-    public void futar(){
+    public void futar() {
         //puter atas
         mViewFlipper = (ViewFlipper) this.findViewById(R.id.image_view_flipper);
         mViewFlipper.setAutoStart(false);
@@ -347,7 +339,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                 skipActivity(Menu_Lokasi.class);
                 break;
             case R.id.btn_dunia:
-                 skipActivity(Menu_Lokasi_All.class);
+                skipActivity(Menu_Lokasi_All.class);
                 break;
             case R.id.btn_alumni:
                 skipActivity(Pilihan_Alumni.class);

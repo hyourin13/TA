@@ -8,15 +8,31 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1089211711680:android:b8be890deaca8b6d",
+        "mobilesdk_app_id": "1:1089211711680:android:f40851b615ca3ab6",
         "android_client_info": {
-          "package_name": "mochamad.ulin.nuha.nja"
+          "package_name": "mochamad.ulin.nuha.ta"
         }
       },
       "oauth_client": [
         {
+          "client_id": "1089211711680-vqbrpn1tniggicuk6sefjue8fnkvhtpg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mochamad.ulin.nuha.ta",
+            "certificate_hash": "119fdadc885fea64ad0d594924e6bf85e15feac7"
+          }
+        },
+        {
           "client_id": "1089211711680-85065jk49lnedek4u3reflovr4d9eqdi.apps.googleusercontent.com",
           "client_type": 3
+        },
+        {
+          "client_id": "1089211711680-98pi7j58pvtmh5e3b10m0aofjbivsdsb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mochamad.ulin.nuha.ta",
+            "certificate_hash": "23200b2eb8d9ff36d37a085e37d9739f2c9719a7"
+          }
         }
       ],
       "api_key": [
@@ -29,8 +45,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089211711680-85065jk49lnedek4u3reflovr4d9eqdi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2
@@ -39,18 +60,18 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1089211711680:android:f40851b615ca3ab6",
+        "mobilesdk_app_id": "1:1089211711680:android:de22e1eed3251634",
         "android_client_info": {
-          "package_name": "mochamad.ulin.nuha.ta"
+          "package_name": "mochamad.ulin.nuha.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1089211711680-98pi7j58pvtmh5e3b10m0aofjbivsdsb.apps.googleusercontent.com",
+          "client_id": "1089211711680-qqpe82kbqkq4bnn4ai5v0d8t02tpih6e.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "mochamad.ulin.nuha.ta",
-            "certificate_hash": "23200b2eb8d9ff36d37a085e37d9739f2c9719a7"
+            "package_name": "mochamad.ulin.nuha.myapplication",
+            "certificate_hash": "119fdadc885fea64ad0d594924e6bf85e15feac7"
           }
         },
         {

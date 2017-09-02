@@ -13,6 +13,20 @@
     <string name="facebook_app_id">508377842833493</string>
     <string name="account_kit_client_token">e9c4b09dca897a6e888496f5574b169b</string>
 
+
+    //firebase sms
+    <string name="status_code_sent">Status = Mengirim Kode Verifikasi</string>
+    <string name="status_verification_failed">Status =  Verifikasi Gagal</string>
+    <string name="status_verification_succeeded">Status = Verifikasi Sukses</string>
+    <string name="status_sign_in_failed">Status = Gagal Login</string>
+    <string name="instant_validation">(instant validation)</string>
+    <string name="signed_in">Halaman Lupa Password Aplikasi NurJa Alumni</string>
+    <string name="signed_out">Halaman Lupa Password Aplikasi NurJa Alumni</string>
+    <string name="firebase_status_fmt">ID : %s</string>
+    <string name="sign_out">Keluar</string>
+    <string name="desc_firebase_lockup">name</string>
+    <string name="phone_title_text">NurJa Alumni</string>
+
     //mapss
     <string name="no_geocoder_available">No geocoder available</string>
     <string name="fetch_address">Fetch address</string>

@@ -54,14 +54,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_gusdur" />
 
             <CheckBox
@@ -86,14 +85,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_hasan_genggong" />
 
             <CheckBox
@@ -118,15 +116,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_hasan_nawawi" />
 
             <CheckBox
@@ -160,14 +156,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_asad" />
 
             <CheckBox
@@ -192,14 +187,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_zaini" />
 
             <CheckBox
@@ -224,14 +218,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_sufyan" />
 
             <CheckBox
@@ -265,15 +258,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_fawaid" />
 
             <CheckBox
@@ -298,14 +289,13 @@
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:paddingTop="5dp"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_abdul_haq" />
 
             <CheckBox
@@ -330,14 +320,12 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:maxWidth="42dp"
-                android:maxHeight="42dp"
-                android:scaleType="fitCenter"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
                 android:src="@drawable/kyai_zuhri" />
 
             <CheckBox

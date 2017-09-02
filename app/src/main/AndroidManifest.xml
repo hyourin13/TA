@@ -188,6 +188,8 @@
             android:label="@string/title_activity_ver_alumni"
             android:theme="@style/AppTheme" />
         <activity android:name=".Cek_nis"></activity>
+        <activity android:name=".PhoneAuthActivity"></activity>
+        <activity android:name=".Verifikasi_HP"></activity>
         <activity android:name=".Password"></activity>
     </application>
 

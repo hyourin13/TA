@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Password extends AppCompatActivity {
-    EditText edt1,edt2;
+    EditText edt1, edt2;
     Button btn1;
     Server con = new Server();
     private ProgressDialog pDialog;
@@ -35,9 +35,11 @@ public class Password extends AppCompatActivity {
     int success;
 
     public static String TAGnis = "nis";
-    String nis1;
+    String nis1, ingat;
 
     String device, pass;
+    Intent iin;
+    Bundle b;
 
 
     @Override
@@ -48,27 +50,58 @@ public class Password extends AppCompatActivity {
         edt2 = (EditText) findViewById(R.id.edt_cek_password2);
         btn1 = (Button) findViewById(R.id.btn_cek_pass);
 
+        iin = getIntent();
+        b = iin.getExtras();
+
+        if (b != null) {
+            ingat = (String) b.get("mutiara");
+        } else {
+            ingat = "zonk";
+        }
+        Toast.makeText(this, ingat, Toast.LENGTH_SHORT).show();
+
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String satu = edt1.getText().toString();
                 String dua = edt2.getText().toString();
-                if (satu.equalsIgnoreCase("")){
+                if (satu.equalsIgnoreCase("")) {
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
                     alertDialog.setTitle("Gagal");
                     alertDialog.setCancelable(false);
                     alertDialog.setMessage("Anda Belum Menginputkan Password");
-                }else {
-                    if (satu.equalsIgnoreCase(dua)){
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+
+                        }
+                    });
+                    alertDialog.show();
+
+
+                } else {
+                    if (satu.equalsIgnoreCase(dua)) {
                         TelephonyManager tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
                         device = tm.getDeviceId();
                         pass = satu;
                         new semu().execute();
-                    }else{
+                    } else {
                         final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
                         alertDialog.setTitle("Gagal");
                         alertDialog.setCancelable(false);
                         alertDialog.setMessage("Password Tidak Cocok");
+                        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // TODO Auto-generated method stub
+
+                            }
+                        });
+                        alertDialog.show();
+
                     }
                 }
             }
@@ -99,6 +132,7 @@ public class Password extends AppCompatActivity {
             List<NameValuePair> params = new ArrayList<NameValuePair>();
             params.add(new BasicNameValuePair("pass", pass));
             params.add(new BasicNameValuePair("device", device));
+            params.add(new BasicNameValuePair("ingat", ingat));
             System.out.println(params);
 
             // Melakukan Proses Request HTTP Post dengan Parameter yang ada
@@ -129,60 +163,99 @@ public class Password extends AppCompatActivity {
          * Setalah selesai dialog menghilang
          **/
         protected void onPostExecute(String file_url) {
-            if (success == 1) {
+            if (ingat != null) {
+                if (success == 1) {
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setCancelable(false);
+                    alertDialog.setMessage("Sukses Mengganti Password");
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
-                alertDialog.setTitle("Sukses");
-                alertDialog.setCancelable(false);
-                alertDialog.setMessage("Sukses Disimpan");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                            Intent i = new Intent(Password.this, DrowRanger.class);
+                            startActivity(i);
+                            finish();
+                        }
+                    });
+                    alertDialog.show();
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
-                        new semu2().execute();
-                        Intent i = new Intent(Password.this, Daftar.class);
-                        startActivity(i);
-                        finish();
+                } else {
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
+                    alertDialog.setTitle("Gagal");
+                    alertDialog.setCancelable(false);
+                    alertDialog.setMessage("Gagal Mengganti Password");
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-                    }
-                });
-                alertDialog.show();
-            }else {
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
-                alertDialog.setTitle("Gagal");
-                alertDialog.setCancelable(false);
-                alertDialog.setMessage("Ntahlah");
-                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                            Intent i = new Intent(Password.this, DrowRanger.class);
+                            startActivity(i);
+                            finish();
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO Auto-generated method stub
+                        }
+                    });
+                    alertDialog.show();
+                }
+                pDialog.dismiss();
+            } else {
+                if (success == 1) {
+
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
+                    alertDialog.setTitle("Sukses");
+                    alertDialog.setCancelable(false);
+                    alertDialog.setMessage("Sukses Disimpan");
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
+                            new semu2().execute();
+                            Intent i = new Intent(Password.this, Daftar.class);
+                            startActivity(i);
+                            finish();
+
+                        }
+                    });
+                    alertDialog.show();
+                } else {
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
+                    alertDialog.setTitle("Gagal");
+                    alertDialog.setCancelable(false);
+                    alertDialog.setMessage("Ntahlah");
+                    alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
 
 
-                    }
-                });
-                alertDialog.show();
+                        }
+                    });
+                    alertDialog.show();
+                }
+                pDialog.dismiss();
             }
-            pDialog.dismiss();
         }
     }
 
     @Override
     public void onBackPressed() {
-            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
-            alertDialog.setTitle("Informasi");
-            alertDialog.setCancelable(false);
-            alertDialog.setMessage("Harap Menyelesaikan Proses Registrasi");
-            alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
+        alertDialog.setTitle("Informasi");
+        alertDialog.setCancelable(false);
+        alertDialog.setMessage("Harap Menyelesaikan Proses Registrasi");
+        alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // TODO Auto-generated method stub
-                    dialog.dismiss();
-                }
-            });
-            alertDialog.show();
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                dialog.dismiss();
+            }
+        });
+        alertDialog.show();
     }
 
 
@@ -244,11 +317,11 @@ public class Password extends AppCompatActivity {
                 startActivity(i);
                 finish();
 
-            }else {
+            } else {
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Password.this);
                 alertDialog.setTitle("Gagal");
                 alertDialog.setCancelable(false);
-                alertDialog.setMessage("NIS Anda Tidak Ditemukan");
+                alertDialog.setMessage("");
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                     @Override
@@ -261,10 +334,9 @@ public class Password extends AppCompatActivity {
                 alertDialog.show();
             }
             pDialog.dismiss();
+
         }
     }
-
-
 
 
 }

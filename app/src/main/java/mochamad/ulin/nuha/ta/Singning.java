@@ -255,7 +255,7 @@ public class Singning extends Activity implements View.OnClickListener {
     private void showGPSDisabledAlertToUser() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setCancelable(false);
-        alertDialogBuilder.setMessage("GPS pada perangkat anda sedang non-aktif. silakan mengaktifkan?")
+        alertDialogBuilder.setMessage("Aktifkan GPS dengan Setting Akurasi Tinggi ?")
                 .setCancelable(false)
                 .setPositiveButton("OK",
                         new DialogInterface.OnClickListener() {
@@ -263,7 +263,6 @@ public class Singning extends Activity implements View.OnClickListener {
                                 Intent callGPSSettingIntent = new Intent(
                                         android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                                 startActivity(callGPSSettingIntent);
-                                finish();
                             }
                         });
         AlertDialog alert = alertDialogBuilder.create();
@@ -371,7 +370,21 @@ public class Singning extends Activity implements View.OnClickListener {
                     }
                 });
                 alertDialog.show();
-            }else {
+            }else if (success == 5) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Singning.this);
+                alertDialog.setTitle("Gagal");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Password Anda Salah");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        pDialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+            }else  {
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Singning.this);
                 alertDialog.setTitle("Gagal");
                 alertDialog.setCancelable(false);

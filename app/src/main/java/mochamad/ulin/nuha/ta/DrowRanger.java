@@ -47,16 +47,16 @@ import java.util.List;
 
 public class DrowRanger extends Activity implements View.OnClickListener {
 
-    String[] PERMISSIONS = { android.Manifest.permission.READ_PHONE_STATE,android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.CALL_PHONE, android.Manifest.permission.READ_SMS, android.Manifest.permission.READ_CONTACTS, android.Manifest.permission.WRITE_CONTACTS, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    String[] PERMISSIONS = {android.Manifest.permission.READ_PHONE_STATE, android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.CALL_PHONE, android.Manifest.permission.READ_SMS, android.Manifest.permission.READ_CONTACTS, android.Manifest.permission.WRITE_CONTACTS, android.Manifest.permission.WRITE_EXTERNAL_STORAGE};
     int PERMISSION_ALL = 99;
     private static int MY_REQUEST_CODE = 1;
     public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
 
-    TextView cedafatar,ceklupa,ceklogin;
-    EditText edthp,edtpass;
+    TextView cedafatar, ceklupa, ceklogin;
+    EditText edthp, edtpass;
     Button nis;
-    String hp,passs,final_hp;
+    String hp, passs, final_hp;
 
     Server con = new Server();
     private ProgressDialog pDialog;
@@ -73,17 +73,18 @@ public class DrowRanger extends Activity implements View.OnClickListener {
     public static String TAGpekerjaan = "pekerjaan";
     public static String TAGwilayah = "wilayah";
     public static String TAGno_hp = "no_hp";
-    public static String TAGlat= "lat";
-    public static String TAGlng= "lng";
-    public static String TAGalamat= "alamat";
-    public static String TAGjns_klmn= "jns_klmn";
-    public static String TAGmasuk= "tgl_masuk";
-    public static String TAGkeluar= "tgl_keluar";
-    public static String TAGfoto= "foto";
-    public static String TAGket= "ket";
+    public static String TAGlat = "lat";
+    public static String TAGlng = "lng";
+    public static String TAGalamat = "alamat";
+    public static String TAGjns_klmn = "jns_klmn";
+    public static String TAGmasuk = "tgl_masuk";
+    public static String TAGkeluar = "tgl_keluar";
+    public static String TAGfoto = "foto";
+    public static String TAGket = "ket";
 
-    String nama,nis1,nama1,email1, kerja1, didik1, wilayah1, no_hp1, lat1, lng1,alamat1 ,jns_klmn1,masuk1, keluar1, foto1, ket1 ;
+    String nama, nis1, nama1, email1, kerja1, didik1, wilayah1, no_hp1, lat1, lng1, alamat1, jns_klmn1, masuk1, keluar1, foto1, ket1;
     String no_hp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,9 +111,9 @@ public class DrowRanger extends Activity implements View.OnClickListener {
         }
 
         bacaPreferensi();
-        if (no_hp.toString().equals("0")){
+        if (no_hp.toString().equals("0")) {
 
-        }else {
+        } else {
             Intent i = new Intent(DrowRanger.this, Menu_utama.class);
             startActivity(i);
             finish();
@@ -121,7 +122,7 @@ public class DrowRanger extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.sing_daftar:
                 Intent pindah = new Intent(this, Login.class);
                 startActivity(pindah);
@@ -131,16 +132,20 @@ public class DrowRanger extends Activity implements View.OnClickListener {
                 String kata1 = "+62";
                 final_hp = kata1.concat(hp);
                 passs = edtpass.getText().toString();
-                if (final_hp.equalsIgnoreCase("")){
+                if (final_hp.equalsIgnoreCase("")) {
                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DrowRanger.this);
                     alertDialog.setTitle("Gagal");
                     alertDialog.setCancelable(false);
                     alertDialog.setMessage("Anda Belum Memasukkan Nomer");
-                }else{
+                } else {
                     Toast.makeText(this, final_hp, Toast.LENGTH_SHORT).show();
                     Toast.makeText(this, passs, Toast.LENGTH_SHORT).show();
                     new semu().execute();
                 }
+                break;
+            case R.id.forgotpass:
+                Intent pindah1 = new Intent(this, Verifikasi_HP.class);
+                startActivity(pindah1);
                 break;
 
         }
@@ -261,8 +266,8 @@ public class DrowRanger extends Activity implements View.OnClickListener {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                       dialog.dismiss();
-                        startActivity(new Intent(DrowRanger.this,Menu_utama.class));
+                        dialog.dismiss();
+                        startActivity(new Intent(DrowRanger.this, Menu_utama.class));
                         SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
                         SharedPreferences.Editor editor = pref.edit();
                         editor.putString("no_hp", no_hp1);
@@ -282,37 +287,49 @@ public class DrowRanger extends Activity implements View.OnClickListener {
                         editor.putString("tggl_masuk", masuk1);
                         editor.commit();
                         finish();
-
-                     /* *//*  Toast.makeText(DrowRanger.this, nis1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, nama1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, email1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, didik1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, kerja1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, wilayah1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, no_hp1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, lat1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, lng1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, alamat1, Toast.LENGTH_SHORT).show();*//*
-                       Toast.makeText(DrowRanger.this, jns_klmn1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, masuk1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, keluar1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, foto1, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(DrowRanger.this, ket1, Toast.LENGTH_SHORT).show();*/
                     }
                 });
                 alertDialog.show();
-            }else {
+            } else if (success == 5) {
                 final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DrowRanger.this);
                 alertDialog.setTitle("Gagal");
                 alertDialog.setCancelable(false);
-                alertDialog.setMessage("NIS Anda Tidak Ditemukan");
+                alertDialog.setMessage("Password Anda Salah");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        pDialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+            } else if (success == 9) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DrowRanger.this);
+                alertDialog.setTitle("Gagal");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Ntahlah");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        pDialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+            } else {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DrowRanger.this);
+                alertDialog.setTitle("Gagal");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Nomer atau Password Anda Salah");
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         dialog.dismiss();
-                        startActivity(new Intent(DrowRanger.this,ErrorDaftar.class));
+                        startActivity(new Intent(DrowRanger.this, ErrorDaftar.class));
                         finish();
                     }
                 });
@@ -321,8 +338,6 @@ public class DrowRanger extends Activity implements View.OnClickListener {
             pDialog.dismiss();
         }
     }
-
-
 
 
     private void showGPSDisabledAlertToUser() {
@@ -342,7 +357,6 @@ public class DrowRanger extends Activity implements View.OnClickListener {
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
-
 
 
     class TestInternet extends AsyncTask<Void, Void, Boolean> {
@@ -382,7 +396,7 @@ public class DrowRanger extends Activity implements View.OnClickListener {
 
         @Override
         protected void onPostExecute(Boolean result) {
-           // pDialog.dismiss();
+            // pDialog.dismiss();
             if (!result) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DrowRanger.this);
                 builder.setMessage("Tidak dapat menyambung ke internet. Silahkan cek koneksi internet anda. !!!");
