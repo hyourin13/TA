@@ -40,9 +40,9 @@
         <TextView
             android:id="@+id/detail"
             style="@style/ThemeOverlay.MyTextDetail"
-            tools:text="ID"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:text="ID" />
 
     </LinearLayout>
 
@@ -74,6 +74,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1.0"
                     android:hint="@string/hint_phone_number"
+                    android:maxLength="12"
                     android:inputType="phone" />
 
                 <Button

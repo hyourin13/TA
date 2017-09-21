@@ -66,6 +66,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.menu_utama);
         initViews();
         bacaPreferensi();
+        Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
         new TestInternet().execute();
 
         AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
@@ -92,6 +93,7 @@ public class Menu_utama extends AppCompatActivity implements View.OnClickListene
                     finish();
                 } else {
                     Toast.makeText(Menu_utama.this, " Aktif", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Menu_utama.this, no_hp, Toast.LENGTH_SHORT).show();
                     new semu().execute();
                 }
 

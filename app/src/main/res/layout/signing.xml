@@ -92,7 +92,7 @@
                     android:gravity="left"
                     android:hint="No Handphone"
                     android:inputType="number"
-                    android:maxLength="12"
+                    android:maxLength="11"
                     android:padding="16dp"
                     android:textColor="@color/colortext"
                     android:textColorHint="@color/colorhint"

@@ -187,10 +187,20 @@
             android:name=".Verifikasi_satu"
             android:label="@string/title_activity_ver_alumni"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Cek_nis"></activity>
-        <activity android:name=".PhoneAuthActivity"></activity>
-        <activity android:name=".Verifikasi_HP"></activity>
-        <activity android:name=".Password"></activity>
+        <activity
+            android:name=".Cek_nis"/>
+        <activity
+            android:name=".Verifikasi_HP"/>
+        <activity
+            android:name=".Password"/>
+        <activity
+            android:name=".Tanggapan"/>
+        <activity
+            android:name=".Activity_Tanggapan"
+            android:label="@string/title_activity_tanggap"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".Detail_Tangggap"/>
     </application>
 
 </manifest>

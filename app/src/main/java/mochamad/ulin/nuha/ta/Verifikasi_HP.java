@@ -1,9 +1,14 @@
 package mochamad.ulin.nuha.ta;
 
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -24,6 +30,14 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Verifikasi_HP extends AppCompatActivity implements
@@ -39,6 +53,14 @@ public class Verifikasi_HP extends AppCompatActivity implements
     private static final int STATE_VERIFY_SUCCESS = 4;
     private static final int STATE_SIGNIN_FAILED = 5;
     private static final int STATE_SIGNIN_SUCCESS = 6;
+
+    Server con = new Server();
+    private ProgressDialog pDialog;
+    private static final String TAG_SUCCESS = "success";
+    JSONParser jsonParser = new JSONParser();
+    private static final String TAG_hasil = "Hasil";
+    int success;
+    String final_hp;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -386,15 +408,104 @@ public class Verifikasi_HP extends AppCompatActivity implements
         }
     }
 
+
+    class semu extends AsyncTask<String, String, String> {
+        protected void onPreExecute() {
+            super.onPreExecute();
+            pDialog = new ProgressDialog(Verifikasi_HP.this);
+            pDialog.setMessage("Loading....");
+            pDialog.setIndeterminate(false);
+            pDialog.setCancelable(false);
+            pDialog.show();
+            pDialog.dismiss();
+        }
+
+        @Override
+        protected String doInBackground(String... arg0) {
+            // Berhubung Tidak ada proses Where dalam Query maka Parameternya
+            // Kosong
+            List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("hp", final_hp));
+            System.out.println(params);
+
+            // Melakukan Proses Request HTTP Post dengan Parameter yang ada
+            JSONObject json = jsonParser.makeHttpRequest(con.URL + "view_cek_hape.php", "POST",
+                    params);
+
+            // menampilkan log JSON pada logcat
+            Log.d("Create Response", json.toString());
+
+            // check untuk proses penyimpanan
+            try {
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
+                    JSONObject hasil = Object_hasil.getJSONObject(0);
+                } else {
+                    // hasil Tidak ditemukan
+                    System.out.println("Data Tidak Ditemukan");
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        /**
+         * Setalah selesai dialog menghilang
+         **/
+        protected void onPostExecute(String file_url) {
+            if (success == 1) {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Verifikasi_HP.this);
+                alertDialog.setTitle("Sukses");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Data Ditemukan");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        dialog.dismiss();
+                        startPhoneNumberVerification(mPhoneNumberField.getText().toString());
+                    }
+                });
+                alertDialog.show();
+            } else {
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Verifikasi_HP.this);
+                alertDialog.setTitle("Gagal");
+                alertDialog.setCancelable(false);
+                alertDialog.setMessage("Nomer Anda Tidak Terdaftar");
+                alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO Auto-generated method stub
+                        dialog.dismiss();
+                        finish();
+                    }
+                });
+                alertDialog.show();
+            }
+            pDialog.dismiss();
+        }
+    }
+
+
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button_start_verification:
                 if (!validatePhoneNumber()) {
                     return;
+                }else{
+                    String coba = mPhoneNumberField.getText().toString();
+                    final_hp = coba.substring(2);
+                    //Toast.makeText(this, final_hp, Toast.LENGTH_SHORT).show();
+                    new semu().execute();
                 }
-
-                startPhoneNumberVerification(mPhoneNumberField.getText().toString());
                 break;
             case R.id.button_verify_phone:
                 String code = mVerificationField.getText().toString();
@@ -406,6 +517,9 @@ public class Verifikasi_HP extends AppCompatActivity implements
                 verifyPhoneNumberWithCode(mVerificationId, code);
                 break;
             case R.id.button_resend:
+                if (!validatePhoneNumber()) {
+                    return;
+                }
                 resendVerificationCode(mPhoneNumberField.getText().toString(), mResendToken);
                 break;
             case R.id.sign_out_button:

@@ -106,7 +106,6 @@ public class Activity_Masukan extends SwipeBackActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
                         ednama.setText(null);
-                        ednis.setText(null);
                     }
                 });
                 alertDialog.show();
