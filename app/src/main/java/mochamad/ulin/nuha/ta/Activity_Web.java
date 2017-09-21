@@ -49,7 +49,7 @@ public class Activity_Web extends SwipeBackActivity {
     private void initViews() {
         webView = (WebView) findViewById(R.id.webview);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://www.nuruljadid.net");
+        webView.loadUrl("http://www.nuruljadid.net/");
     }
 
 }

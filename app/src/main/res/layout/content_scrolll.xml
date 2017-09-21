@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="mochamad.ulin.nuha.ta.Scrolll"
+    tools:showIn="@layout/activity_scrolll">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="175dp"
+        android:orientation="vertical">
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_nis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_nik"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="NIS"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_nama"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_nama"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:focusable="true"
+                android:hint="Nama Alumni Santri"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_email_black"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="Email"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_kerja"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_card_travel_black"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="Pekerjaan Saat Ini"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_pendidikan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_school_black"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="Pendidikan Terakhir"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_wilayah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_location_black"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="Wilayah Terakhir"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_alamat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_location_black"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="Alamat Saat Ini"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColorHint="@color/colorAccent">
+
+            <EditText
+                android:id="@+id/d_hp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_add_location_black"
+                android:drawablePadding="10dp"
+                android:enabled="false"
+                android:hint="No HP"
+                android:inputType="text"
+                android:textSize="12dp" />
+
+        </android.support.design.widget.TextInputLayout>
+
+
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

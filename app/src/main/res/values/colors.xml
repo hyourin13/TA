@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#3f51b5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#0088ff</color>
     <color name="color_radio">#8989ff</color>
     <color name="color_web">#3b3bff</color>
+    <color name="BlueMilitary">#f7ff00</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_trans">#99FFFFFF</color>
+    <color name="grey_100">#0040ff</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="colortext">#000000</color>
+    <color name="colorhint">#ffffff</color>
 </resources>

@@ -1,26 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/src/debug/res/color" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/debug/res/values/dimens.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/assets/font/Lato-Medium.ttf" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/assets/font/Oxygen-Regular.ttf" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/AccountKitSimpleSampleApplication.java" charset="ISO-8859-1" />
-    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Error.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/ErrorActivity.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/ErrorDaftar.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/JSONParser.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Login.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/RequestHandler.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/ScrollingActivity.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Signin.java" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/mochamad/ulin/nuha/ta/Upload.java" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/bg.jpg" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/bgrect.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gmbr1.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gmbr2.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gmbr3.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gmbr4.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/gmbr5.png" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_add_location_black.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_card_travel_black.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_email_black.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_nama.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_nik.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_people_black_24dp.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_people_white_24dp.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_phone.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_photo_camera_white_24dp.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_refresh_white.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_school_black.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/logonj.png" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/mybutton.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/rect.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/rect1.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_error.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_scrolling.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/content_scrolling.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/errordaftar.xml" charset="ISO-8859-1" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/login.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/upload.xml" charset="ISO-8859-1" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu" charset="ISO-8859-1" />
   </component>
 </project>

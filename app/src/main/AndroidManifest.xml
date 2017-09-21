@@ -15,41 +15,46 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
+    <permission
+        android:name="mochamad.ulin.nuha.ta.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="mochamad.ulin.nuha.ta.permission.MAPS_RECEIVE" />
 
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
-
-
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_loogo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_loogo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNoActionBar">
-        <activity android:name=".Signin">
+        <activity android:name=".DrowRanger">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Activity_Web"
             android:label="@string/title_activity_web"
-            android:theme="@style/Theme.Swipe.Back"></activity>
-        <activity android:name=".Activity_Radio"></activity>
+            android:theme="@style/Theme.Swipe.Back" />
+        <activity android:name=".Activity_Radio" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
-
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
@@ -61,27 +66,86 @@
             android:value="@string/account_kit_client_token" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".DetailNews"
             android:label="@string/title_activity_maps"
-            android:theme="@style/AppTheme" ></activity>
-
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Menu_Lokasi"
+            android:label="@string/title_activity_maps"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Menu_Lokasi_All"
+            android:label="@string/title_activity_mapss"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Pilihan"
+            android:label="@string/title_activity_akun"
+            android:theme="@style/Theme.Swipe.Back" />
+        <activity
+            android:name=".Menu_Alumni"
+            android:label="@string/title_activity_alumni"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Detail"
+            android:theme="@style/AppThemeNoActionBar" />
         <activity
             android:name=".ErrorDaftar"
-            android:theme="@style/AppThemeNoActionBar"></activity>
-        <activity
-            android:name=".Menu_utama"
-            android:theme="@style/AppThemeNoActionBar"></activity>
+            android:theme="@style/AppThemeNoActionBar" />
 
         <activity
             android:name=".ErrorActivity"
             android:configChanges="keyboardHidden|orientation"
             android:label="@string/action_bar_title_hello"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".Login"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Menu_utama"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".ScrollingActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Upload"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".MapsActivity"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Daftar"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Detail_Home"
+            android:theme="@style/AppThemeNoActionBar" />
 
-        <activity android:name=".Login">
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_loogo" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" />
 
-        </activity>
-
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action._BOOT_COMPLETED" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action._BOOT_COMPLETED" />
+            </intent-filter>
+        </service>
 
         <!--
                     The API key for Google Maps-based APIs is defined as a string resource.
@@ -90,9 +154,53 @@
                     You need a different API key for each encryption key, including the release key that is used to
                     sign the APK for publishing.
                     You can define the keys for the debug and release targets in src/debug/ and src/release/.
-               -->
+        -->
 
+        <activity
+            android:name=".Z"
+            android:label="@string/title_activity_z" />
+        <activity android:name=".Activity_NJ" />
 
+        <activity
+            android:name=".tampilnotif"
+            android:label="@string/title_activity_pesan"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activity_Masukan"
+            android:label="@string/title_activity_Masukan"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Pilihan_Alumni" />
+        <activity
+            android:name=".Menu_Alumni_Lokasi"
+            android:label="@string/title_activity_Cari_Lokasi"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Menu_Alumni_Nama"
+            android:label="@string/title_activity_Cari_nama"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Pilihan_Z" />
+        <activity
+            android:name=".ScrollingActivity_HP"
+            android:label="@string/title_activity_scrolling__hp"
+            android:theme="@style/AppThemeNoActionBar" />
+        <activity
+            android:name=".Verifikasi_satu"
+            android:label="@string/title_activity_ver_alumni"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Cek_nis"/>
+        <activity
+            android:name=".Verifikasi_HP"/>
+        <activity
+            android:name=".Password"/>
+        <activity
+            android:name=".Tanggapan"/>
+        <activity
+            android:name=".Activity_Tanggapan"
+            android:label="@string/title_activity_tanggap"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name=".Detail_Tangggap"/>
     </application>
 
 </manifest>

@@ -1,12 +1,42 @@
 <resources>
-    <string name="app_name">TA</string>
+    <string name="app_name">NurJa Alumni</string>
     <string name="title_activity_web">Website Nurul Jadid</string>
     <string name="title_activity_radio">Radio Nurul Jadid</string>
     <string name="title_activity_maps">Lokasi</string>
-    <string name="facebook_app_id">1390449167704658</string>
-    <string name="account_kit_client_token">88d2c451bb471e69cf52f1cb607ea456</string>
+    <string name="title_activity_mapss">Peta Lokasi Alumni</string>
+    <string name="title_activity_alumni">Daftar Alumni</string>
+    <string name="title_activity_akun">Menu Akun</string>
+    <string name="title_activity_pesan">Informasi Nurul Jadid</string>
+    <string name="title_activity_Masukan">Masukan</string>
+    <string name="title_activity_Cari_nama">Cari Nama Alumni</string>
+    <string name="title_activity_Cari_Lokasi">Cari Lokasi Alumni</string>
+    <string name="facebook_app_id">508377842833493</string>
+    <string name="account_kit_client_token">e9c4b09dca897a6e888496f5574b169b</string>
 
 
+    //firebase sms
+    <string name="status_code_sent">Status = Mengirim Kode Verifikasi</string>
+    <string name="status_verification_failed">Status =  Verifikasi Gagal</string>
+    <string name="status_verification_succeeded">Status = Verifikasi Sukses</string>
+    <string name="status_sign_in_failed">Status = Gagal Login</string>
+    <string name="instant_validation">(instant validation)</string>
+    <string name="signed_in">Halaman Lupa Password Aplikasi NurJa Alumni</string>
+    <string name="signed_out">Halaman Lupa Password Aplikasi NurJa Alumni</string>
+    <string name="firebase_status_fmt">ID : %s</string>
+    <string name="sign_out">Keluar</string>
+    <string name="desc_firebase_lockup">name</string>
+    <string name="phone_title_text">NurJa Alumni</string>
+
+    //mapss
+    <string name="no_geocoder_available">No geocoder available</string>
+    <string name="fetch_address">Fetch address</string>
+    <string name="address_found">Address found</string>
+    <string name="no_address_found">Sorry, no address found</string>
+    <string name="no_location_data_provided">No location data provided</string>
+    <string name="service_not_available">Sorry, the service is not available</string>
+    <string name="invalid_lat_long_used">Invalid latitude or longitude used</string>
+
+    //fb kit
     <string name="action_bar_title_hello">Hello</string>
     <string name="permissions_get_accounts_message">
         Grant permission to read your email address from your device to pre-fill.
@@ -120,7 +150,20 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string name="title_activity_contoh">Map</string>
+    <string name="title_activity_ccont">Map</string>
+    <string name="title_activity_z">Map</string>
+    <string name="title_activity_scrolll">Scrolll</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_scrolling__hp">ScrollingActivity_HP</string>
+    <string name="title_activity_ver_alumni">Verifikasi Alumni</string>
+    <string name="title_activity_tanggap">List Tanggapan Pesan Masukan</string>
 
+    <string name="hint_phone_number">Nomer Telepon</string>
+    <string name="hint_verification_code">Kode Verifikasi</string>
+    <string name="start_phone_auth">Kirim SMS Verifikasi</string>
+    <string name="verify_phone_auth">Verifikasi Kode</string>
+    <string name="resend_phone_auth">Kirim Ulang SMS</string>
 
 
 </resources>

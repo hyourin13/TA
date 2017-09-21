@@ -1,86 +1,80 @@
 package mochamad.ulin.nuha.ta;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Typeface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by ryu on 23/05/2017.
- */
+public class Cek_nis extends Activity {
+    TextView cek;
+    Button nis;
+    String niss;
 
-public class Signin extends AppCompatActivity implements View.OnClickListener {
-    TextView daftar,masuk;
-    EditText hp;
     Server con = new Server();
     private ProgressDialog pDialog;
-    int success;
     private static final String TAG_SUCCESS = "success";
     JSONParser jsonParser = new JSONParser();
-    String no_hp;
+    private static final String TAG_hasil = "Hasil";
+    int success;
+    public static String TAGnis = "nis";
+    public static String TAGnm = "nm";
+    public static String TAGjns_klmn = "jns_klmn";
+    public static String TAGtgl_masuk = "tgl_masuk";
+    public static String TAGtgl_keluar = "tgl_keluar";
+
+
+
+    String nama,jns,tglmasuk,tglkeluar,nis1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.awal);
-        Typeface custom_font = Typeface.createFromAsset(getAssets(),"font/Lato-Medium.ttf");
-        daftar = (TextView) findViewById(R.id.Create2);
-        masuk = (TextView) findViewById(R.id.signin);
-        hp = (EditText) findViewById(R.id.nomorr);
-        daftar.setTypeface(custom_font);
-        masuk.setTypeface(custom_font);
-        hp.setTypeface(custom_font);
-        daftar.setOnClickListener(this);
-        masuk.setOnClickListener(this);
+        setContentView(R.layout.activity_cek_nis);
+        cek = (TextView) findViewById(R.id.cek_nis);
+        nis = (Button) findViewById(R.id.btn_cek);
 
-       // Toast.makeText(this, no_hp, Toast.LENGTH_SHORT).show();
-    }
-
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.Create2:
-                Intent pindah = new Intent(this, Login.class);
-                startActivity(pindah);
-                break;
-            case R.id.signin:
-                no_hp = hp.getText().toString();
-                if (no_hp.equalsIgnoreCase("")){
-                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
+        nis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                niss = cek.getText().toString();
+                if (niss.equalsIgnoreCase("")){
+                    final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cek_nis.this);
                     alertDialog.setTitle("Gagal");
                     alertDialog.setCancelable(false);
                     alertDialog.setMessage("Anda Belum Memasukkan Nomer");
-                    hp.setText("");
+                    nis.setText("");
                 }else{
+                    Toast.makeText(Cek_nis.this, niss, Toast.LENGTH_SHORT).show();
                     new semu().execute();
                 }
-                break;
-        }
+            }
+        });
     }
+
 
     class semu extends AsyncTask<String, String, String> {
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(Signin.this);
+            pDialog = new ProgressDialog(Cek_nis.this);
             pDialog.setMessage("Loading....");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(false);
@@ -92,11 +86,11 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             // Berhubung Tidak ada proses Where dalam Query maka Parameternya
             // Kosong
             List<NameValuePair> params = new ArrayList<NameValuePair>();
-            params.add(new BasicNameValuePair("no_hp", no_hp));
+            params.add(new BasicNameValuePair("niss", niss));
             System.out.println(params);
 
             // Melakukan Proses Request HTTP Post dengan Parameter yang ada
-            JSONObject json = jsonParser.makeHttpRequest(con.URL + "view_cari_alumni.php", "POST",
+            JSONObject json = jsonParser.makeHttpRequest(con.URL + "view_cari_nis_alumni.php", "POST",
                     params);
 
             // menampilkan log JSON pada logcat
@@ -105,7 +99,19 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             // check untuk proses penyimpanan
             try {
                 success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    JSONArray Object_hasil = json.getJSONArray(TAG_hasil);
+                    JSONObject hasil = Object_hasil.getJSONObject(0);
+                    nis1 = hasil.getString(TAGnis);
+                    nama = hasil.getString(TAGnm);
+                    jns = hasil.getString(TAGjns_klmn);
+                    tglmasuk = hasil.getString(TAGtgl_masuk);
+                    tglkeluar = hasil.getString(TAGtgl_keluar);
 
+                } else {
+                    // hasil Tidak ditemukan
+                    System.out.println("Data Tidak Ditemukan");
+                }
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -120,39 +126,38 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
         protected void onPostExecute(String file_url) {
             if (success == 1) {
 
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cek_nis.this);
                 alertDialog.setTitle("Sukses");
                 alertDialog.setCancelable(false);
-                alertDialog.setMessage("Anda Berhasil Login");
+                alertDialog.setMessage("Data Ditemukan");
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        startActivity(new Intent(Signin.this,Menu_utama.class));
-                        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = pref.edit();
-                        editor.putString("no_hp", no_hp);
-                        // editor.putString("token", "1");
-                        editor.commit();
+                        Intent i = new Intent(Cek_nis.this, ScrollingActivity.class);
+                        i.putExtra("NIS", niss);
+                        i.putExtra("Nama", nama);
+                        i.putExtra("JNS", jns);
+                        i.putExtra("MASUKZ", tglmasuk);
+                        i.putExtra("KELUARZ", tglkeluar);
+                        startActivity(i);
                         finish();
 
                     }
                 });
-
-
                 alertDialog.show();
             }else {
-                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Signin.this);
+                final AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cek_nis.this);
                 alertDialog.setTitle("Gagal");
                 alertDialog.setCancelable(false);
-                alertDialog.setMessage("Nomer Anda Belum Terdaftar");
+                alertDialog.setMessage("NIS Anda Tidak Ditemukan");
                 alertDialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // TODO Auto-generated method stub
-                        startActivity(new Intent(Signin.this,Error.class));
+                        startActivity(new Intent(Cek_nis.this,Cek_nis.class));
                         finish();
 
                     }
@@ -161,12 +166,6 @@ public class Signin extends AppCompatActivity implements View.OnClickListener {
             }
             pDialog.dismiss();
         }
-    }
-
-
-    private void bacaPreferensi() {
-        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
-        no_hp = pref.getString("no_hp", "0");
     }
 
 
